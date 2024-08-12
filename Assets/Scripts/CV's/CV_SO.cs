@@ -11,6 +11,7 @@ public class CV_SO : ScriptableObject
     public Employee_Stats.attitude e_Attitude;
     public Employee_Stats.skill skill;
     public Employee_Stats.workExp workExp;
+    public float e_Happiness;
     public int e_Efficientcy;
     public int e_Productivity;
 }
