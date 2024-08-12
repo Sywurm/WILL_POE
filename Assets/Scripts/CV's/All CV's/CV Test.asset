@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ba142b15396b24cb2e019cb0c8f542, type: 3}
   m_Name: CV Test
   m_EditorClassIdentifier: 
-  e_Name: 
-  e_Attitude: 0
-  e_Efficientcy: 0
-  e_Productivity: 0
+  e_Name: John
+  e_Attitude: 1
+  skill: 0
+  workExp: 0
+  e_Efficientcy: 50
+  e_Productivity: 40
