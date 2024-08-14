@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region Variables
+    #region OfficeStates
     //This is a list of employees, this list will be updated by the emplyoeeManager as a new emploee is hired or fired
     private List<GameObject> listOfActiveEmployees;
 
@@ -25,6 +26,16 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
     public float _OfficeState;
+    #endregion
+
+    #region TimeManagement
+    [SerializeField][Range(0,60)] private float seconds = 0f;
+    [SerializeField][Range(0, 60)] private float currentTime = 0f;
+    [SerializeField] private float multiplier = 1f;
+    [SerializeField][Range(0, 24)] private int hour = 00;
+    [SerializeField][Range(0, 5)] private int day = 0;
+
+    #endregion
 
     #endregion
 
@@ -36,13 +47,37 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        TimeManager();
     }
     #endregion
 
     #region Functions
+
+    #region TimeFunctions
+
+    private void TimeManager()
+    {
+        currentTime = seconds * multiplier;
+        seconds += Time.fixedDeltaTime;
+
+        if(currentTime >= 60f)
+        {
+            seconds = 0f;
+            currentTime = 0f;
+
+            hour++;
+        }
+
+        if(hour >= 24 )
+        {
+            hour = 0;
+            day++;
+        }
+    }
+
+    #endregion
 
     private void OfficeStats()
     {
