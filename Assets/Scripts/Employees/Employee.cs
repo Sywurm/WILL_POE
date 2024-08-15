@@ -1,9 +1,15 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Employee : MonoBehaviour
 {
-    #region General Variables
+    public List<CV_SO> listCV;
+    private CV_SO currentCV;
+    public string employeeName;
 
+    #region General Variables
+    [Header("Employee stats")]
     [Tooltip("This is a true/false bool that represents whether the employee is actively employed or not, there are seperate functions that can be used to change its value ")]
     [SerializeField] private bool isActivelyEmployed;
 
@@ -43,7 +49,9 @@ public class Employee : MonoBehaviour
 
     private void Start()
     {
-
+        int rng = Random.Range(0, listCV.Count);
+        currentCV = listCV[rng];
+        SetEmployeeStatsCV();
     }
 
     private void Update()
@@ -55,7 +63,8 @@ public class Employee : MonoBehaviour
 
     #region Functions
 
-    #region EmployeeStats
+    //Change Region to randomise employee stats
+    #region Randomise EmployeeStats
 
     private float AssignRandomStats(float stat)
     {
@@ -104,7 +113,17 @@ public class Employee : MonoBehaviour
 
     #endregion
 
+    #region cvEmployeeStats
+
+    public void SetEmployeeStatsCV()
+    {
+        employeeName = currentCV.e_Name;
+        employeeHappiness = currentCV.e_Happiness;
+        employeeEfficiency = currentCV.e_Efficientcy;
+        employeeOfficeEffect = currentCV.e_Productivity;
+    }
+
     #endregion
 
-
+    #endregion
 }

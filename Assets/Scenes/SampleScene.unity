@@ -152,6 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceae4c4461a265648ad4ca6d770fd980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listCV:
+  - {fileID: 11400000, guid: 705892fd9a497ca418cb9716fe891bb0, type: 2}
+  - {fileID: 11400000, guid: 50ecbfd66ed68454a8c62cad71a21381, type: 2}
+  - {fileID: 11400000, guid: 7eaaa5b80e956be4ab649eaeff458f82, type: 2}
+  - {fileID: 11400000, guid: 772a395958217154a89f2c3e172c95f2, type: 2}
+  - {fileID: 11400000, guid: 3e80c8ade543e5546b93389b8357d9d4, type: 2}
+  employeeName: 
   isActivelyEmployed: 0
   employeeHappiness: 0
   employeeEfficiency: 0

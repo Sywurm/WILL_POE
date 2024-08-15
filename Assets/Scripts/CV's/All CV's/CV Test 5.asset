@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CV Test 5
   m_EditorClassIdentifier: 
   e_Name: Sally
-  e_Attitude: 1
-  skill: 0
-  workExp: 0
+  e_Attitude: 0
+  skills: []
+  workExp: []
+  e_Happiness: 30
   e_Efficientcy: 15
   e_Productivity: 80
