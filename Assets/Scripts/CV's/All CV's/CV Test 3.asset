@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CV Test 3
   m_EditorClassIdentifier: 
   e_Name: Koos
-  e_Attitude: 1
-  skill: 0
-  workExp: 0
+  e_Attitude: 4
+  skills: []
+  workExp: []
+  e_Happiness: 10
   e_Efficientcy: 70
   e_Productivity: 20

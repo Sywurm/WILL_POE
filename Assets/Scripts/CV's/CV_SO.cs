@@ -8,10 +8,13 @@ public class CV_SO : ScriptableObject
     //Blueprint for employees
     //add more stats here to add every where
     public string e_Name;
-    public Employee_Stats.attitude e_Attitude;
-    public Employee_Stats.skill skill;
-    public Employee_Stats.workExp workExp;
-    //public float e_Happiness;
+    public Employee.EmployeeAttitudeType e_Attitude;
+    //public Employee_Stats.attitude e_Attitude;
+    public List<string> skills;
+    //public Employee_Stats.skill skill;
+    public List<string> workExp;
+    //public Employee_Stats.workExp workExp;
+    public float e_Happiness;
     public int e_Efficientcy;
     public int e_Productivity;
 }

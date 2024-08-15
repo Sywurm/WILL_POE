@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_Name: John
   e_Attitude: 1
-  skill: 0
-  workExp: 0
+  skills: []
+  workExp: []
+  e_Happiness: 50
   e_Efficientcy: 50
   e_Productivity: 40

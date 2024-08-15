@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CV Test 2
   m_EditorClassIdentifier: 
   e_Name: Susan
-  e_Attitude: 2
-  skill: 0
-  workExp: 0
+  e_Attitude: 3
+  skills: []
+  workExp: []
+  e_Happiness: 100
   e_Efficientcy: 25
   e_Productivity: 40
