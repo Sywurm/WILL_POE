@@ -30,7 +30,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (curDialogueIdx + 1 >= dialogueItems.Count)
         {
-            HideTutorial(); // Last item passed, tutorial can be marked as complete and the object deactivated
+            FinishTutorial();
             return;
         }
 
@@ -51,8 +51,9 @@ public class DialogueSystem : MonoBehaviour
     }
 
 
-    public void HideTutorial()
+    public void FinishTutorial()
     {
+        // Note: this just disables the Tutorial panel, but this could load another scene, or do whatever you want when the tutorial is over.
         gameObject.SetActive(false);
     }
 }

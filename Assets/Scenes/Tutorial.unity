@@ -27949,7 +27949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec49b885b90ad949b59ec2a12a3a35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelImg: {fileID: 8094724867943591055}
   textComponent: {fileID: 1643858116499996849}
   dialogueItems:
   - MainTextContents: Hi there, you must be the new hiring manager that's running
@@ -27967,10 +27966,13 @@ MonoBehaviour:
       can have my lovely holiday in the Bahamas.
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Open the menu below
+  - MainTextContents: Open the CV menu below
     requireGivenGameObjectActive: 1
     activePassCheck: {fileID: 169350552}
-  - MainTextContents: Notice x y z?
+  - MainTextContents: Notice this this and that? those are important
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: Well Thats all for the tutorial, thanks!
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
 --- !u!4 &6721265927116184967
@@ -28302,8 +28304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 52, y: 50}
-  m_SizeDelta: {x: 332.8964, y: 722.5081}
+  m_AnchoredPosition: {x: 52, y: 81.44159}
+  m_SizeDelta: {x: 332.8964, y: 691.0667}
   m_Pivot: {x: 0, y: 0}
 --- !u!33 &6868884210169030715
 MeshFilter:
