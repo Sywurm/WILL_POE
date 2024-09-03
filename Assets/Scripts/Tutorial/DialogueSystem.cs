@@ -13,6 +13,7 @@ public class DialoguePiece
     public bool requireGivenGameObjectActive;
     public GameObject? activePassCheck;
 }
+
 public class DialogueSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textComponent;
