@@ -59,7 +59,7 @@ public class Tutorial_CV : MonoBehaviour
     public void BadCV()
     {
         employeePicture.GetComponent<Image>().sprite = badCV.e_EmployeeFoto;
-        employeeName.GetComponent<Text>().text += badCV.e_Name;
+        employeeName.GetComponent<Text>().text = badCV.e_Name;
         for(int i = 0; i < badCV.skills.Count; i++)
         {
             employeeSkill.GetComponent<Text>().text = i + 1 + "." + badCV.skills[i].ToString();
