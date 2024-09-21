@@ -22,6 +22,9 @@ public class Employee : MonoBehaviour
     [Tooltip("This Value Represents this employees Affect on this major 'progress bar' ")]
     [SerializeField] private float employeeOfficeEffect;
 
+    [Tooltip("This bool is to generate a new cv")]
+    [SerializeField] private bool generateCV;
+
     public enum EmployeeAttitudeType
     {
         Chill,
@@ -54,47 +57,6 @@ public class Employee : MonoBehaviour
         SetEmployeeStatsCV();
     }
 
-    private void Update()
-    {
-        
-    }
-
-    #endregion
-
-    #region Functions
-
-    //Change Region to randomise employee stats
-    #region Randomise EmployeeStats
-
-    private float AssignRandomStats(float stat)
-    {
-        //Roll a Random Number Each time this function is called to assign that number as a stat
-        float statAssignment = 0;
-        statAssignment = Random.Range(0, 101);
-
-        return statAssignment;
-    }
-
-    //Function that rolls a random number using a generator function to assign the employees Stats
-    private void AssignHappiness()
-    {
-        employeeHappiness = AssignRandomStats(employeeHappiness);
-
-    }
-
-    //Function that rolls a random number using a generator function to assign the employees Stats
-    private void AssignEfficiency()
-    {
-        employeeEfficiency = AssignRandomStats(employeeEfficiency);
-    }
-
-    //Function that rolls a random number using a generator function to assign the employees Stats
-    private void AssignOfficeEffect()
-    {
-        employeeOfficeEffect = AssignRandomStats(employeeOfficeEffect);
-    }
-
-
     #endregion
 
     #region Employment Status
@@ -122,8 +84,6 @@ public class Employee : MonoBehaviour
         employeeEfficiency = currentCV.e_Efficientcy;
         employeeOfficeEffect = currentCV.e_Productivity;
     }
-
-    #endregion
 
     #endregion
 }
