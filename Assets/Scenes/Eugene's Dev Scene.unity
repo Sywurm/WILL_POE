@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,6 +123,72 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &139259070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139259072}
+  - component: {fileID: 139259073}
+  m_Layer: 0
+  m_Name: CV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139259072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139259070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 922.8725, y: 564.76636, z: 201.61679}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139259073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139259070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ba94253d6c868459f1b1ba1b0ca00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  names:
+  - John
+  biography:
+  - is cool
+  education:
+  - Kinder Garden
+  - Primary School
+  - Secondary School
+  skills:
+  - math
+  workExp:
+  - Store Clerk
+  e_Name: 
+  e_Attitude: 0
+  e_EmployeeFoto: {fileID: 0}
+  e_bio: 
+  e_edu: []
+  e_skills: []
+  e_workExp: []
+  e_Happiness: 0
+  e_Efficientcy: 0
+  e_Productivity: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +320,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e80c8ade543e5546b93389b8357d9d4, type: 2}
   generate: 1
   theCV: {fileID: 0}
+  cE_name: 
+  cE_Efficientcy: 0
+  cE_Productivity: 0
 --- !u!4 &874519003
 Transform:
   m_ObjectHideFlags: 0
@@ -367,3 +437,4 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 874519003}
+  - {fileID: 139259072}
