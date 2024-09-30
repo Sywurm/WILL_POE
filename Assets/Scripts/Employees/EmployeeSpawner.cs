@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EmployeeSpawner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> employeePrefabs = new List<GameObject>();
+    [SerializeField] GameObject employeePrefab;
     [Header("Spawn Settings")]
     [SerializeField] float spawnDelayMin;
     [SerializeField] float spawnDelayMax;
@@ -19,12 +19,10 @@ public class EmployeeSpawner : MonoBehaviour
 
     IEnumerator spawnEmployee()
     {
-        GameObject employee = employeePrefabs[Random.Range(0, employeePrefabs.Count)];
-
         if (spawnAmount != 0)
         {
             spawnAmount--;
-            Instantiate(employee, this.transform.position, Quaternion.identity);
+            Instantiate(employeePrefab, this.transform.position, Quaternion.identity);
         }
 
         yield return new WaitForSeconds(spawnDelay);
