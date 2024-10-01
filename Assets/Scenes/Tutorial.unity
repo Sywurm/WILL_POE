@@ -22988,8 +22988,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100, y: 100}
-  m_SizeDelta: {x: 267.23657, y: 50.106903}
+  m_AnchoredPosition: {x: -982, y: 124}
+  m_SizeDelta: {x: 164.3257, y: 129.6291}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &281855664775628618
 GameObject:
@@ -25191,7 +25191,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -29569,7 +29569,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 476.53195, y: 0}
-  m_SizeDelta: {x: 441.7263, y: 300.2473}
+  m_SizeDelta: {x: 441.7263, y: 548.1692}
   m_Pivot: {x: 1, y: 1}
 --- !u!4 &5134136589610028656
 Transform:
@@ -30385,7 +30385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -31353,31 +31353,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1643858116499996849}
   dialogueItems:
-  - MainTextContents: Hi there, you must be the new hiring manager that's running
-      the place while I'm out eh?
+  - MainTextContents: "\"Hey! [Player's Name]! I\u2019ve got a business trip coming
+      up next week. While I\u2019m away, you will be the head of the studio. Do you
+      think you can manage?\" "
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Good to know, I'm the previous hiring manager, and I'm going
-      on a weeks vacation, so they've hired you in the meantime as an intern to basically
-      do my job for the week, we figure you can't mess this place up too bad in a
-      week.
+  - MainTextContents: '"Yes sir! What do I need to do?"'
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Well I suppose no point in beating around the bush, let me
-      show you around here, so you can get started as soon as possible, and so I
-      can have my lovely holiday in the Bahamas.
+  - MainTextContents: "\"Good! We have a few more applicants who want to join the
+      open spots on the team. You will have to look over their CVs individually.
+      The catch is you will only have time to look over four or five of those CV\u2019s
+      each day. So don\u2019t rush too quickly when having a look at them! Review
+      them properly and note their qualifications to what we need in the studio.\""
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Open the CV menu below
+  - MainTextContents: "\"When you receive a CV, make sure to check it through the
+      CV menu. Over there, you will find the job description. If the candidate\u2019s
+      qualifications meet our requirements, then click on the \u2018Accept\u2019
+      button. Else, click on \u2018Reject\u2019 button. Quite easy, right?\""
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: "\"One more thing - the office and each department have a certain
+      number of slots to fill. If you have a good candidate but all the positions
+      are filled, then you will have to let one of the employees go to fit in the
+      new candidate.\u2019\""
     requireGivenGameObjectActive: 1
     activePassCheck: {fileID: 169350552}
-  - MainTextContents: Notice this this and that? those are important
+  - MainTextContents: '"Understood. But what if I make a mistake when hiring and
+      firing the employee/s?"'
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Well Thats all for the tutorial, thanks!
+  - MainTextContents: "\"Good question! There are three important bars that you must
+      watch out for. Employee Happiness, Employee Productivity and State of the Office.
+      If any of these bars reach zero\u2026 well, let\u2019s just say, it\u2019s
+      game over for you. No pressure though!\""
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
-  - MainTextContents: Well Thats all for the tutorial, thanks!
+  - MainTextContents: "\"You can manage these bars through the Employee Manager and
+      Office View components. You can reassign people and terminate employees where
+      necessary. However, remember that terminating too many people will lead to
+      a decrease in productivity.\u201D"
+    requireGivenGameObjectActive: 1
+    activePassCheck: {fileID: 1023207328}
+  - MainTextContents: "\u201CWhat is the Office View?\u201D"
+    requireGivenGameObjectActive: 1
+    activePassCheck: {fileID: 543551256}
+  - MainTextContents: "\u201CAh yes that is your view of the entire office from an
+      elevated perspective. You will get to see how the team is doing in terms of
+      members' well-being and their levels of activity. The better your decisions,
+      the smoother things run. But if morale drops, the office starts falling apart.\u201D"
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: "\"One more thing: if you bring someone new on board but later
+      find out that they've been a bad fit for the team, you can let them go on the
+      very first day! Be careful, it\u2019s easy to lose the morale of the team if
+      you keep losing people.\""
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: '"I understand! Is there anything else?"'
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: '"Those are the basics. Just remembering is important. Do not
+      hurry to make any of the decisions and avoid hiring just to fill the gaps.
+      And naturally, ensure that the office is operational. Best of luck! See you
+      next week!"'
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
 --- !u!4 &6721265927116184967
