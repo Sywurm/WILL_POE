@@ -5,17 +5,14 @@ using System.IO;
 
 public class My_CV : MonoBehaviour
 {
-    [Header("Employee Looks:",order = 0)]
-    //choose random employee models and add it to the gameobject.
-
-    [Header("List of available Items", order = 1)]
+    [Header("List of available Items", order = 0)]
     public List<string> names;
     public List<string> biography;
     public List<string> education;
     public List<string> skills;
     public List<string> workExp;
 
-    [Header("Employee Stats:", order = 2)]
+    [Header("Employee Stats:", order = 1)]
     public string e_Name;
     public Employee.EmployeeAttitudeType e_Attitude;
     public Sprite e_EmployeeFoto;
