@@ -119,11 +119,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ba94253d6c868459f1b1ba1b0ca00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  names: []
-  biography: []
-  education: []
-  skills: []
-  workExp: []
+  names:
+  - Kimberley Meadows
+  - Cecily Flores
+  - Eleanor Richards
+  - Valentina Juarez
+  - Kate Robbins
+  - Nataniel Bryant
+  - Alanna Burke
+  - Rhiannon Ramos
+  - Shelby Martin
+  - Howard Tran
+  - Troy Beck
+  - Jaden Mccormick
+  - Krystal Buck
+  - Joseph Sherman
+  - Victoria Yoder
+  - Tamara Fuller
+  - Delilah Gay
+  - Leonie Boyd
+  - Liberty Dyer
+  - Milan Villanueva
+  biography:
+  - A pioneering game artist began their career in the early days of the video game
+    industry, contributing to the development of some of the first successful game
+    franchises. Their work includes designing characters, environments, and game
+    mechanics that have become iconic in the gaming world. Over the years, they have
+    received numerous awards and accolades for their innovative contributions to
+    game design.
+  - Influential game artist is known for their unique approach to storytelling and
+    game mechanics. They have worked on a variety of genres, from action-adventure
+    to role-playing games, and have a reputation for creating immersive and emotionally
+    engaging experiences. Their games often feature complex narratives and richly
+    detailed worlds that captivate players.
+  - A notable game artist has made significant contributions to both digital and
+    analog games. They have a diverse portfolio that includes video games, board
+    games, and interactive installations. Their work is characterized by a deep understanding
+    of game theory and a commitment to pushing the boundaries of what games can be.
+    They are also active in the academic community, sharing their knowledge through
+    lectures and publications.
+  - A Beginner game artist is celebrated for their artistic vision and technical
+    prowess. They have been involved in the creation of some of the most visually
+    stunning games in the industry. Their expertise in 3D modeling, animation, and
+    visual effects has helped bring fantastical worlds and characters to life. They
+    are also known for their collaborative spirit, often working closely with other
+    artists and developers to achieve their creative goals.
+  - A pioneering game developer started their career in the early days of the video
+    game industry, contributing to the creation of some of the first successful game
+    franchises. They have experience in various aspects of game development, including
+    programming, design, and project management. Over the years, they have worked
+    on numerous high-profile projects and have been recognized for their innovative
+    contributions to the industry.
+  - Influential game developer is known for their expertise in game design and storytelling.
+    They have worked on a wide range of genres, from action-adventure to role-playing
+    games, and are celebrated for their ability to create immersive and engaging
+    game worlds. Their work often involves close collaboration with artists, writers,
+    and other developers to bring their creative visions to life.
+  - A notable game developer has made significant contributions to both indie and
+    mainstream games. They have a diverse portfolio that includes everything from
+    small, self-funded projects to large-scale commercial releases. Their work is
+    characterized by a deep understanding of game mechanics and a commitment to pushing
+    the boundaries of what games can achieve. They are also active in the game development
+    community, sharing their knowledge through talks and workshops.
+  - A Beginner game developer is celebrated for their technical skills and artistic
+    vision. They have been involved in the development of some of the most visually
+    stunning games in the industry. Their expertise in areas such as 3D modeling,
+    animation, and visual effects has helped bring fantastical worlds and characters
+    to life. They are also known for their collaborative approach, often working
+    closely with other developers to achieve their creative goals.
+  - A pioneering financial expert in the game development industry started their
+    career by helping small indie studios secure funding for their projects. They
+    have extensive experience in financial planning, budgeting, and securing investment.
+    Over the years, they have worked with numerous game developers, helping them
+    navigate the financial complexities of the industry and ensuring their projects
+    are financially viable.
+  - Influential financial professional is known for their expertise in managing the
+    finances of large game development studios. They have a background in accounting
+    and finance, and their role often involves overseeing budgets, financial forecasting,
+    and managing investor relations. Their work is crucial in ensuring that game
+    development projects stay on track and within budget.
+  - A notable financial advisor has made significant contributions to both indie
+    and mainstream game development. They specialize in helping developers secure
+    grants, loans, and other forms of funding. Their deep understanding of the financial
+    landscape of the gaming industry allows them to provide valuable advice on financial
+    strategy and risk management. They are also active in the community, offering
+    workshops and seminars on financial planning for game developers.
+  - Financial professional is celebrated for their strategic financial planning and
+    investment skills. They have been involved in the financial management of some
+    of the most successful game development projects in the industry. Their expertise
+    in financial analysis, investment strategy, and project management has helped
+    bring numerous games to market. They are known for their ability to balance creative
+    ambitions with financial realities, ensuring the long-term success of the projects
+    they work on.
+  - A pioneering game writer began their career by crafting narratives for early
+    text-based adventure games. They have a talent for creating compelling characters
+    and intricate plots that draw players into the game world. Over the years, they
+    have worked on numerous high-profile projects, earning recognition for their
+    ability to weave engaging stories that enhance the gaming experience.
+  - Influential game writer is known for their expertise in interactive storytelling.
+    They have worked on a variety of game genres, from role-playing games to action-adventures,
+    and are celebrated for their ability to create branching narratives that offer
+    players meaningful choices. Their work often involves close collaboration with
+    game designers and developers to ensure that the story integrates seamlessly
+    with gameplay.
+  - A notable game writer has made significant contributions to both indie and mainstream
+    games. They have a diverse portfolio that includes writing for video games, graphic
+    novels, and transmedia projects. Their storytelling is characterized by rich
+    world-building and deep character development. They are also active in the writing
+    community, sharing their knowledge through workshops and mentoring aspiring game
+    writers.
+  - Game writer is celebrated for their innovative approach to narrative design.
+    They have been involved in the creation of some of the most memorable stories
+    in the gaming industry. Their expertise in dialogue writing, plot structuring,
+    and character arcs has helped bring complex and emotionally resonant stories
+    to life. They are known for their ability to balance narrative depth with player
+    agency, creating experiences that are both engaging and interactive.
+  education:
+  - Secondary school
+  - Tersiary school
+  - Online Course
+  - Degree
+  - Deploma
+  - Certeficate
+  - Self Taught
+  skills:
+  - Blender
+  - Unity
+  - Unreal
+  - Krita
+  - Z brush
+  - Fade in
+  - Word
+  - Excell
+  - Scripter
+  - Godot
+  - Vrage
+  - 'Pen and ink '
+  - Paint
+  - 3ds Max
+  workExp:
+  - 1 year
+  - 2 year
+  - 3 year
+  - 4 year
+  - 5 year
+  - 6 year
+  - 7 year
+  - 8 year
+  - 9 year
+  - 10 year
   e_Name: 
   e_Attitude: 0
   e_EmployeeFoto: {fileID: 0}
