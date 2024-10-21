@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5693982807324677361}
   - component: {fileID: 9144884281015451750}
   - component: {fileID: 4050873714417228642}
-  - component: {fileID: 9211658989284778536}
   m_Layer: 0
   m_Name: EmployeeTemp
   m_TagString: Untagged
@@ -278,25 +277,3 @@ MonoBehaviour:
   e_Happiness: 0
   e_Efficientcy: 0
   e_Productivity: 0
---- !u!114 &9211658989284778536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8898220687798051130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceae4c4461a265648ad4ca6d770fd980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listCV: []
-  employeeName: 
-  isActivelyEmployed: 0
-  employeeHappiness: 0
-  employeeEfficiency: 0
-  employeeOfficeEffect: 0
-  generateCV: 0
-  attitudeType: 0
-  previousWorkExperience: []
-  currentSkills: []

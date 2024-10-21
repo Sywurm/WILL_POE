@@ -6,11 +6,11 @@ using System.IO;
 public class My_CV : MonoBehaviour
 {
     [Header("List of available Items", order = 0)]
-    public List<string> names;
-    public List<string> biography;
-    public List<string> education;
-    public List<string> skills;
-    public List<string> workExp;
+    [SerializeField] private List<string> names;
+    [SerializeField] private List<string> biography;
+    [SerializeField] private List<string> education;
+    [SerializeField] private List<string> skills;
+    [SerializeField] private List<string> workExp;
 
     [Header("Employee Stats:", order = 1)]
     public string e_Name;
