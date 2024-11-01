@@ -151,7 +151,7 @@ public class WorkerAI : MonoBehaviour
 
         if (Physics.Raycast(transform.position, forward, out hit, obstacleDetectionRange))
         {
-            if (hit.collider.CompareTag("Obstacle"))
+            if (hit.collider.CompareTag("Obsticle"))
             {
                 Debug.Log("Obstacle detected: " + hit.collider.name); 
 
