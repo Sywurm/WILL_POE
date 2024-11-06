@@ -16,6 +16,7 @@ public class My_CV : MonoBehaviour
     public string e_Name;
     public Employee.EmployeeAttitudeType e_Attitude;
     public Sprite e_EmployeeFoto;
+    public bool e_IsHired;
 
     public string e_bio;
     public List<string> e_edu;
