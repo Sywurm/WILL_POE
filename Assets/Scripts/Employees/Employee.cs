@@ -8,17 +8,6 @@ public class Employee : MonoBehaviour
     private CV_SO currentCV;
     //public string employeeName;
 
-    public enum EmployeeAttitudeType
-    {
-        Chill,
-        Motivated,
-        Productive,
-
-        Annoying,
-        Confrontational,
-        DeadWeight
-    }
-
     #region General Variables
     [Header("Employee stats")]
     [Tooltip("This is a true/false bool that represents whether the employee is actively employed or not, there are seperate functions that can be used to change its value ")]
@@ -36,7 +25,25 @@ public class Employee : MonoBehaviour
     [Tooltip("This bool is to generate a new cv")]
     [SerializeField] private bool generateCV;
 
-   
+    public enum EmployeeAttitudeType
+    {
+        Chill,
+        Motivated,
+        Productive,
+
+        Annoying,
+        Confrontational,
+        DeadWeight
+    }
+
+    public enum EmployeePosition
+    {
+        Unassigned,
+        GameDesign,
+        GameArt,
+        GameDevelopment
+    }
+
     [Tooltip("This is a public enum that allows for employee Attitude to be assinged and changed from anywhere")]
     public EmployeeAttitudeType attitudeType;
 

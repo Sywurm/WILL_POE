@@ -29,6 +29,7 @@ public class Employee_Manager : MonoBehaviour
         listUnEmployees.Add(emp);
         //GetEmployeeStats();
     }
+
     public void GetEmployeeStats()
     {
         employee = listUnEmployees[0];
