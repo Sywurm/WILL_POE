@@ -17,6 +17,7 @@ public class My_CV : MonoBehaviour
     public Employee.EmployeeAttitudeType e_Attitude;
     public Employee.EmployeePosition e_position;
     public Sprite e_EmployeeFoto;
+    public bool e_IsHired;
 
     public string e_bio;
     public List<string> e_edu;
@@ -51,6 +52,7 @@ public class My_CV : MonoBehaviour
         }
 
         e_position = Employee.EmployeePosition.Unassigned;
+
         //randomise Bio
         int rngBio = Random.Range(0, biography.Count);
         e_bio = biography[rngBio];

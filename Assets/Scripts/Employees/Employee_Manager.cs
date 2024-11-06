@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Employee_Manager : MonoBehaviour
 {
     public static Employee_Manager instance;
     public TMP_Dropdown department;
-    public GameObject employeeCardPrefab;
+    public GameObject employee;
 
     #region EmployeeLists
     public List<GameObject> listUnassigned = new List<GameObject>();
-
-    public List<GameObject> listArtist = new List<GameObject>();
-    public List<GameObject> listDeveloper = new List<GameObject>();
-    public List<GameObject> listUiUX = new List<GameObject>();
-    public List<GameObject> listPublicRelations = new List<GameObject>();
-    public List<GameObject> listFinance = new List<GameObject>();
-    public List<GameObject> listAdvertisement = new List<GameObject>();
-    public List<GameObject> listDesigners = new List<GameObject>();
-    public List<GameObject> listNarritive = new List<GameObject>();    
+    public List<GameObject> listAssigned = new List<GameObject>();
+    public List<GameObject> listUnEmployees = new List<GameObject>();
     #endregion
 
     private void Awake()
@@ -28,81 +22,72 @@ public class Employee_Manager : MonoBehaviour
         instance = this;
     }
 
-    private void FixedUpdate()
-    {
-        GetEmployeeStats();
-    }
-
     //This Region Manages all off the stats of the employees
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
     {
-        listUnassigned.Add(emp);
+        listUnEmployees.Add(emp);
+        //GetEmployeeStats();
     }
 
     public void GetEmployeeStats()
     {
-        switch (department.value)
+        employee = listUnEmployees[0];
+        if (employee != null && !employee.GetComponent<My_CV>().e_IsHired)
         {
-            case 0:
-                for (int j = 0; j < listUnassigned.Count; j++)
-                {
-                    
-                }
-                break;
-            case 1:
-                for (int j = 0; j < listArtist.Count; j++) 
-                {
-                    //return listArtist[j].gameObject;
-                }
-                break;
-            case 2:
-                for (int j = 0; j < listDeveloper.Count; j++) 
-                {
-                    //return listDeveloper[j].gameObject;
-                }
-                break;
-            case 3:
-                for (int j = 0; j < listUiUX.Count; j++) 
-                {
-                    //return listUiUX[j].gameObject;
-                }
-                break;
-            case 4:
-                for (int j = 0; j < listPublicRelations.Count; j++) 
-                {
-                    //return listPublicRelations[j].gameObject;
-                }
-                break;
-            case 5:
-                for (int j = 0; j < listFinance.Count; j++) 
-                {
-                    //return listFinance[j].gameObject;
-                }
-                break;
-            case 6:
-                for (int j = 0; j < listAdvertisement.Count; j++) 
-                {
-                    //return listAdvertisement[j].gameObject;
-                }
-                break;
-            case 7:
-                for (int j = 0; j < listDesigners.Count; j++)
-                {
-                    //return listDesigners[j].gameObject;
-                }
-                break;
-            case 8:
-                for (int j = 0; j < listNarritive.Count; j++)
-                {
-                    //return listNarritive[j].gameObject;
-                }
-                break;            
+            //Display the employee on the Ui
         }
     }
-    public void MoveEmployee(GameObject empMove, int newPos)
+
+    public void HireEmployee()
     {
-        //GetEmployeeStats(empMove.gameObject);
+        listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
+        //Generate the employee card
+
+        listUnassigned.Add(listUnEmployees[0]);
+        listUnEmployees.Remove(listUnEmployees[0]);
+        GetEmployeeStats();
+    }
+
+    //Thanos snap code
+    public void DeclineEmployee()
+    {
+        Destroy(listUnEmployees[0]);
+        GetEmployeeStats();
+    }
+
+    public void FireEmployee(GameObject emp)
+    {
+        for (int i = 0; i < listUnassigned.Count; i++)
+        {
+            if(listUnassigned[i] == emp)
+            {
+                listUnassigned.RemoveAt(i);
+                Destroy(emp);
+            }
+        }
+        for (int i = 0; i < listAssigned.Count; i++)
+        {
+            if(listAssigned[i] == emp)
+            {
+                listAssigned.RemoveAt(i);
+                Destroy(emp);
+            }
+        }
+        
+    }
+
+    public void MoveEmployee(GameObject empMove, Employee.EmployeePosition pos)
+    {
+        for (int i = 0; i < listUnassigned.Count; i++)
+        {
+            if(listUnassigned[i] == empMove && listUnassigned[i].gameObject.GetComponent<My_CV>().e_position != pos)
+            {
+                listUnassigned[i].gameObject.GetComponent<My_CV>().e_position = pos;
+                listAssigned.Add(listUnassigned[i]);
+                listUnassigned.RemoveAt(i);
+            }
+        }
     }
     #endregion
 
