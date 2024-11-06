@@ -52,6 +52,7 @@ public class My_CV : MonoBehaviour
         }
 
         e_position = Employee.EmployeePosition.Unassigned;
+
         //randomise Bio
         int rngBio = Random.Range(0, biography.Count);
         e_bio = biography[rngBio];

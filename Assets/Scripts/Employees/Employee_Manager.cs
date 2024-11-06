@@ -42,6 +42,8 @@ public class Employee_Manager : MonoBehaviour
     public void HireEmployee()
     {
         listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
+        //Generate the employee card
+
         listUnassigned.Add(listUnEmployees[0]);
         listUnEmployees.Remove(listUnEmployees[0]);
         GetEmployeeStats();
@@ -54,9 +56,38 @@ public class Employee_Manager : MonoBehaviour
         GetEmployeeStats();
     }
 
-    public void MoveEmployee(GameObject empMove)
+    public void FireEmployee(GameObject emp)
     {
+        for (int i = 0; i < listUnassigned.Count; i++)
+        {
+            if(listUnassigned[i] == emp)
+            {
+                listUnassigned.RemoveAt(i);
+                Destroy(emp);
+            }
+        }
+        for (int i = 0; i < listAssigned.Count; i++)
+        {
+            if(listAssigned[i] == emp)
+            {
+                listAssigned.RemoveAt(i);
+                Destroy(emp);
+            }
+        }
         
+    }
+
+    public void MoveEmployee(GameObject empMove, Employee.EmployeePosition pos)
+    {
+        for (int i = 0; i < listUnassigned.Count; i++)
+        {
+            if(listUnassigned[i] == empMove && listUnassigned[i].gameObject.GetComponent<My_CV>().e_position != pos)
+            {
+                listUnassigned[i].gameObject.GetComponent<My_CV>().e_position = pos;
+                listAssigned.Add(listUnassigned[i]);
+                listUnassigned.RemoveAt(i);
+            }
+        }
     }
     #endregion
 
