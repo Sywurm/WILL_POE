@@ -39,6 +39,7 @@ public class Employee_Manager : MonoBehaviour
     {
         listUnassigned.Add(emp);
     }
+
     public void GetEmployeeStats()
     {
         switch (department.value)
