@@ -11,8 +11,15 @@ public class EmployeeSpawner : MonoBehaviour
     [SerializeField] float spawnDelayMax;
     [SerializeField] int spawnAmount;
     public List<GameObject> employeeObjects = new List<GameObject>();
+    public static EmployeeSpawner instance;
 
     float spawnDelay;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         StartCoroutine(spawnEmployee());
@@ -24,7 +31,7 @@ public class EmployeeSpawner : MonoBehaviour
         {
             spawnAmount--;
             GameObject temp = Instantiate(employeePrefab, this.transform.position, Quaternion.identity);
-            employeeObjects.Add(temp);
+            Employee_Manager.instance.SetEmployees(temp);
         }
 
         yield return new WaitForSeconds(spawnDelay);

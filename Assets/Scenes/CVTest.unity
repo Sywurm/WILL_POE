@@ -377,6 +377,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1339823705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2834887451821324116, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+  m_PrefabInstance: {fileID: 3748701857678234090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1607195295
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +532,34 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3748701857678234096}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetDropdownValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Employee_Manager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3012013416859829815, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -670,13 +703,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2834887451821324116, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3748701857678234096}
   m_SourcePrefab: {fileID: 100100000, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
 --- !u!224 &3748701857678234091 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5912534561714314289, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
   m_PrefabInstance: {fileID: 3748701857678234090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3748701857678234092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2622878365688364101, guid: 2c4552143c2fc684799074171bcb1afc, type: 3}
+  m_PrefabInstance: {fileID: 3748701857678234090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339823705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3748701857678234096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339823705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403f0b6ec59496d4b88f3d7e9a3930c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  department: {fileID: 3748701857678234092}
+  employeeCardPrefab: {fileID: 0}
+  listUnassigned: []
+  listArtist: []
+  listDeveloper: []
+  listUiUX: []
+  listPublicRelations: []
+  listFinance: []
+  listAdvertisement: []
+  listDesigners: []
+  listNarritive: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

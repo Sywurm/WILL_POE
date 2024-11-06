@@ -2927,10 +2927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02afd8bd7f25e04eae919640d6c65f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  employeePrefab: {fileID: 0}
+  employeePrefab: {fileID: 8898220687798051130, guid: fcc3060bab8db484090c37ce23d99e24, type: 3}
   spawnDelayMin: 10
   spawnDelayMax: 25
   spawnAmount: 2
+  employeeObjects: []
 --- !u!4 &686377729
 Transform:
   m_ObjectHideFlags: 0

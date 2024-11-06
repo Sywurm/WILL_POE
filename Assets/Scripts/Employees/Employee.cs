@@ -6,7 +6,7 @@ public class Employee : MonoBehaviour
 {
     public List<CV_SO> listCV;
     private CV_SO currentCV;
-    public string employeeName;
+    //public string employeeName;
 
     #region General Variables
     [Header("Employee stats")]
@@ -79,7 +79,7 @@ public class Employee : MonoBehaviour
 
     public void SetEmployeeStatsCV()
     {
-        employeeName = currentCV.e_Name;
+        //employeeName = currentCV.e_Name;
         employeeHappiness = currentCV.e_Happiness;
         employeeEfficiency = currentCV.e_Efficientcy;
         employeeOfficeEffect = currentCV.e_Productivity;
