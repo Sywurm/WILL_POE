@@ -8,6 +8,7 @@ public class DraggableUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 {
     Image image;
     public Transform parentAfterDrag;
+    public bool currentlyDraggable = true;
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class DraggableUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!currentlyDraggable) return;
+
         LogLevelManager.instance.Log("Begin drag", LogLevelManager.LogLevel.INFO);
         parentAfterDrag = transform.parent;
 
@@ -28,12 +31,16 @@ public class DraggableUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!currentlyDraggable) return;
+
         LogLevelManager.instance.Log("Dragging", LogLevelManager.LogLevel.INFO);
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!currentlyDraggable) return;
+
         LogLevelManager.instance.Log("End drag", LogLevelManager.LogLevel.INFO);
 
         // Resetting the parent back to its initial parent
