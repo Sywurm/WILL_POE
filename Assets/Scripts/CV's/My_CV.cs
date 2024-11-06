@@ -15,6 +15,7 @@ public class My_CV : MonoBehaviour
     [Header("Employee Stats:", order = 1)]
     public string e_Name;
     public Employee.EmployeeAttitudeType e_Attitude;
+    public Employee.EmployeePosition e_position;
     public Sprite e_EmployeeFoto;
 
     public string e_bio;
@@ -48,6 +49,8 @@ public class My_CV : MonoBehaviour
             case 5:
                 e_Attitude = Employee.EmployeeAttitudeType.DeadWeight; break;
         }
+
+        e_position = Employee.EmployeePosition.Unassigned;
         //randomise Bio
         int rngBio = Random.Range(0, biography.Count);
         e_bio = biography[rngBio];

@@ -35,6 +35,15 @@ public class Employee : MonoBehaviour
         Confrontational,
         DeadWeight
     }
+
+    public enum EmployeePosition
+    {
+        Unassigned,
+        GameDesign,
+        GameArt,
+        GameDevelopment
+    }
+
     [Tooltip("This is a public enum that allows for employee Attitude to be assinged and changed from anywhere")]
     public EmployeeAttitudeType attitudeType;
 
