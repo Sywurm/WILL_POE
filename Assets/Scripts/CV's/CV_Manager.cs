@@ -22,7 +22,7 @@ public class CV_Manager : MonoBehaviour
 
     public void SetCV(GameObject employee)
     {
-        empName.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_Name;
+        empName.GetComponent<Text>().text = employee.GetComponent<My_CV>().e_Name;
         empPicture.GetComponent<Image>().sprite = employee.GetComponent<My_CV>().e_EmployeeFoto;
         empHappiness.GetComponent<Slider>().value = employee.GetComponent<My_CV>().e_Happiness;
         //Change Interactablity for happiness slider
@@ -34,7 +34,7 @@ public class CV_Manager : MonoBehaviour
         
         for(int i = 0; i < employee.GetComponent<My_CV>().e_skills.Count; i++)
         {
-            empSkill.GetComponent<TMP_Text>().text = i + 1 + "." + employee.GetComponent<My_CV>().e_skills[i].ToString();
+            empSkill.GetComponent<Text>().text = i + 1 + "." + employee.GetComponent<My_CV>().e_skills[i].ToString();
             Instantiate(empSkill, empSkillList.transform);
         }        
 
