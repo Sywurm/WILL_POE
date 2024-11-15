@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23928,13 +23928,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280443788}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -201, y: 203, z: -309}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 263, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1283170538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2402362376270040756, guid: 2c50995cb7464304aa9c1d85cf8f178e, type: 3}
@@ -30512,6 +30512,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628115417}
   m_CullTransparentMesh: 1
+--- !u!1 &1628859826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628859828}
+  - component: {fileID: 1628859827}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1628859827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628859826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6d062b5534564a93a10097b838829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunRotationX: 0
+  _OfficeHappitness: 0
+  _OfficeEfficiency: 0
+  _OfficeState: 0
+  seconds: 0
+  currentTime: 0
+  multiplier: 1
+  hour: 8
+  minuets: 0
+  day: 1
+  timeIsPaused: 0
+  TimeTMP: {fileID: 0}
+  HourTMP: {fileID: 0}
+  DayTMP: {fileID: 0}
+--- !u!4 &1628859828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628859826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 954.13715, y: -494.46982, z: -1857.1703}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1634652671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3762967090738830339, guid: 2c50995cb7464304aa9c1d85cf8f178e, type: 3}
@@ -36667,16 +36725,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   department: {fileID: 0}
-  employeeCardPrefab: {fileID: 0}
+  employee: {fileID: 0}
   listUnassigned: []
-  listArtist: []
-  listDeveloper: []
-  listUiUX: []
-  listPublicRelations: []
-  listFinance: []
-  listAdvertisement: []
-  listDesigners: []
-  listNarritive: []
+  listAssigned: []
+  listUnEmployees: []
 --- !u!4 &1983838370
 Transform:
   m_ObjectHideFlags: 0
@@ -42377,4 +42429,5 @@ SceneRoots:
   - {fileID: 194209827}
   - {fileID: 1251385408}
   - {fileID: 1983838370}
+  - {fileID: 1628859828}
   - {fileID: 1988333192}
