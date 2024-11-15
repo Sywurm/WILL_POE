@@ -10,6 +10,7 @@ public class Employee_Manager : MonoBehaviour
     public static Employee_Manager instance;
     public TMP_Dropdown department;
     public GameObject employee;
+    public CV_Manager cvManager;
 
     #region EmployeeLists
     public List<GameObject> listUnassigned = new List<GameObject>();
@@ -27,6 +28,7 @@ public class Employee_Manager : MonoBehaviour
     public void SetEmployees(GameObject emp)
     {
         listUnEmployees.Add(emp);
+        cvManager.SetCV(emp);
         //GetEmployeeStats();
     }
 

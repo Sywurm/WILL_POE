@@ -65,11 +65,13 @@ public class My_CV : MonoBehaviour
         }
         //Randomise Skills
         randomAmount = Random.Range(0,skills.Count);
+
         for(int i = 0;i < randomAmount;i++)
         {
             int rngSkills = Random.Range(0,skills.Count);
             e_skills.Add(skills[rngSkills]);
         }
+
         //Randomise Work experience
         randomAmount = Random.Range(0, workExp.Count);
         for( int i = 0;i<randomAmount ; i++)
