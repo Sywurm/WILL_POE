@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CV_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject empSkillList;
+    [SerializeField] private GameObject empSkillPrefab;
 
     [Header("CV Settings")]
     [SerializeField] private GameObject empName;
