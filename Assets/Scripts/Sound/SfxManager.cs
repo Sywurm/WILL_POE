@@ -38,6 +38,7 @@ public class SfxManager : MonoBehaviour
     public void PlaySound(string soundName)
     {
         AudioClip clip = m_sfxHash.GetValueFromKey(soundName);
+        
         _audioSource.PlayOneShot(clip);
     }
 }
