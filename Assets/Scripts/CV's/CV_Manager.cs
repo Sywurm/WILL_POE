@@ -35,7 +35,7 @@ public class CV_Manager : MonoBehaviour
         for(int i = 0; i < employee.GetComponent<My_CV>().e_skills.Count; i++)
         {
             empSkill.GetComponent<Text>().text = i + 1 + "." + employee.GetComponent<My_CV>().e_skills[i].ToString();
-            Instantiate(empSkill, empSkillList.transform);
+            // Instantiate(empSkill, empSkillList.transform);
         }        
 
         for(int i = 0; i < employee.GetComponent<My_CV>().e_edu.Count; i++)
