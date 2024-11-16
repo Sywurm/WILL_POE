@@ -21,20 +21,19 @@ public class Employee_Manager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        cvManager.SetCV(listUnEmployees[0]);
     }
 
     //This Region Manages all off the stats of the employees
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
     {
-        listUnEmployees.Add(emp);
-        cvManager.SetCV(emp);
+        listUnEmployees.Add(emp);        
         //GetEmployeeStats();
     }
 
     public void GetEmployeeStats()
     {
+        cvManager.ResetEmployee();
         //employee = listUnEmployees[0];
         //if (employee != null && !employee.GetComponent<My_CV>().e_IsHired)
         //{

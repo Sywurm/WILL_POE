@@ -21,7 +21,7 @@ public class CV_Manager : MonoBehaviour
 
     public void SetCV(GameObject employee)
     {
-        empName.GetComponent<Text>().text = employee.GetComponent<My_CV>().e_Name;
+        empName.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_Name;
         empPicture.GetComponent<Image>().sprite = employee.GetComponent<My_CV>().e_EmployeeFoto;
         empHappiness.GetComponent<Slider>().value = employee.GetComponent<My_CV>().e_Happiness;
         //Change Interactablity for happiness slider
@@ -49,7 +49,7 @@ public class CV_Manager : MonoBehaviour
 
     public void ResetEmployee()
     {
-        empName.GetComponent<Text>().text = "";
+        empName.GetComponent<TMP_Text>().text = "";
         empPicture.GetComponent<Image>().sprite = null;
         empHappiness.GetComponent<Slider>().value = 0;
         empEfficiency.GetComponent<Slider>().value = 0;

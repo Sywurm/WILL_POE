@@ -1615,7 +1615,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -994.7538, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2813397870120646050
 CanvasRenderer:
@@ -1667,7 +1667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcc9e4f6e67ab64aa3465cd9e550568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  empSkillPrefab: {fileID: 0}
   empName: {fileID: 6817327339563804351}
   empPicture: {fileID: 8232856130803829831}
   empHappiness: {fileID: 6988699501433970599}
