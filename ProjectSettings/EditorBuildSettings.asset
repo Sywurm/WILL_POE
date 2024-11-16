@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0d13f5789f721044eac94c6dcd456bbb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 0d69724b692716747b8d675a1074853b
   - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: ddc163c797fbdcb4bbdb93d3d7986572
+  - enabled: 0
     path: Assets/Scenes/TestScenes/CV_UI.unity
     guid: 51f5386e1ca3d654386ba03aa8f607f8
   - enabled: 1
-    path: Assets/Scenes/TestScenes/MakeYourCV.unity
+    path: Assets/Scenes/MakeYourCV.unity
     guid: 1e9cb5ff934ec64469216bae09751aa1
   m_configObjects: {}

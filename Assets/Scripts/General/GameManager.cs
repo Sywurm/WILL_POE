@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class GameManager : MonoBehaviour
 {
     #region Variables
     #region OfficeStates
-    [Tooltip("This Value Represents the Office State. It can only be reAssigned from within this script ")]
-    [SerializeField] private float OfficeState;
+    [Tooltip("This Value Represents the x rotation of the directional light (Sun).")]
+    [SerializeField][Range(0, 180)] private float sunRotationX;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
     public float _OfficeHappitness;
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI HourTMP;
     [SerializeField] TextMeshProUGUI DayTMP;
 
+    [SerializeField] GameObject sun;
+
     private enum DayOfWeek
     {
         Monday,
@@ -42,6 +45,20 @@ public class GameManager : MonoBehaviour
         Friday,
     }
     private DayOfWeek dayOfWeek;
+    #region SunManagement
+
+    private float startTime = 8f;
+    private float endTime = 17f;
+    private float intialRotation = 0f;
+    private float finalRotation = 180f;
+
+    private float currentRotation;
+    private float currentHour;
+
+    
+
+
+    #endregion
 
     #endregion
 
@@ -52,6 +69,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timeIsPaused = false;
+        sun.transform.localEulerAngles = new Vector3(currentRotation, 0, 0);
     }
     private void Update()
     {
@@ -74,8 +92,10 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         TimeManager();
+        RotateDirectionalLight();
 
-        
+
+
     }
     #endregion
 
@@ -148,6 +168,41 @@ public class GameManager : MonoBehaviour
     }
 
 
+    #endregion
+
+    #region SunFunctions
+    private void RotateDirectionalLight()
+    {
+        //This switch case rotates the sun according to the hour using the seconds as the lerp time.
+        //The rotation happens over 15 seconds during specified time changing hours.
+        switch(hour)
+        {
+            case 8:
+
+                currentRotation = Mathf.Lerp(0, 15, currentTime / 15);
+                sun.transform.rotation = Quaternion.Euler(currentRotation, 0, 0);
+                break;
+            case 10:
+                currentRotation = Mathf.Lerp(15, 45, currentTime / 15);
+                sun.transform.rotation = Quaternion.Euler(currentRotation, 0, 0);
+                break;
+
+            case 12:
+                currentRotation = Mathf.Lerp(45, 90, currentTime / 15);
+                sun.transform.rotation = Quaternion.Euler(currentRotation, 0, 0);
+                break;
+
+            case 14:
+                currentRotation = Mathf.Lerp(90, 135, currentTime / 15);
+                sun.transform.rotation = Quaternion.Euler(currentRotation, 0, 0);
+                break;
+
+            case 16:
+                currentRotation = Mathf.Lerp(135, 170, currentTime / 15);
+                sun.transform.rotation = Quaternion.Euler(currentRotation, 0, 0);
+                break;
+        }
+    }
     #endregion
 
     #endregion

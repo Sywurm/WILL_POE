@@ -7,11 +7,6 @@ public class MakeYourCVButtonManager : MonoBehaviour
 {
     [SerializeField] private GameObject createSectionPanel, evaluationSectionPanel;
 
-	public void LoadMainMenuScene()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void SwitchToEvaluation()
     {
         createSectionPanel.SetActive(false);

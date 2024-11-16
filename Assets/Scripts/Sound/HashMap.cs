@@ -3,46 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class HashMap : MonoBehaviour
+public class HashMap<K, V>
 {
-    //Variables for the keys and values
+    List<K> keys = new List<K>();
+    List<V> values = new List<V>();
 
-    //Array
-    //string[] keys;
-    //AudioClip[] values;
-
-    //List
-    List<string> keys = new List<string>();
-    List<AudioClip> values = new List<AudioClip>();
-
-    //Possible populate of hashmap method
-    public void AddToHashMap(AudioClip _clip)
+    public void AddToHashMap(K key, V value)
     {
-        //take audio clip instead of name as string as you can get the name using clip.name
-        keys.Add(_clip.name);   //Name of audioClip
-        values.Add(_clip);  //Sound of audio 
-
+        keys.Add(key);
+        values.Add(value);
     }
 
-    //Retreive value using the keys
-    public AudioClip GetValueFromKey(string _key)
+    public V GetValueFromKey(K key)
     {
-        int index = GetIndexOfKey(_key);    //Call method to get index of key
-        AudioClip clip = values[index];     //Use index of key to get correct audioclip
-        return clip;    //return clip
+        int index = GetIndexOfKey(key);
+        return values[index];
     }
 
-    public int GetIndexOfKey(string _key)
-    {
-        int index = keys.IndexOf(_key);     //get index of key
-        return index;
-    }
-
-    public void Start() //Display values of hashmap in console for testing
-    {
-        for (int i = 0; i < keys.Count; i++)
-        {
-            Debug.Log("Keys: " + keys[i] + ", Values: " + values[i]);
-        }
-    }
+    public int GetIndexOfKey(K key) => keys.IndexOf(key);
 }
