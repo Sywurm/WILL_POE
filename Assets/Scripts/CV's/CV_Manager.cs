@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CV_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject empSkillList;
-
     [Header("CV Settings")]
     [SerializeField] private GameObject empName;
     [SerializeField] private GameObject empPicture;
@@ -34,18 +33,32 @@ public class CV_Manager : MonoBehaviour
         
         for(int i = 0; i < employee.GetComponent<My_CV>().e_skills.Count; i++)
         {
-            empSkill.GetComponent<Text>().text = i + 1 + "." + employee.GetComponent<My_CV>().e_skills[i].ToString();
-            Instantiate(empSkill, empSkillList.transform);
+            empSkill.GetComponent<TMP_Text>().text += i + 1 + employee.GetComponent<My_CV>().e_skills[i] + "\n";
         }        
 
         for(int i = 0; i < employee.GetComponent<My_CV>().e_edu.Count; i++)
         {
-            empEducation.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_edu[i].ToString();
+            empEducation.GetComponent<TMP_Text>().text += employee.GetComponent<My_CV>().e_edu[i] + "\n";
         }
 
         for (int i = 0; i< employee.GetComponent<My_CV>().e_workExp.Count; i++)
         {
-            empWorkExperience.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_workExp[i].ToString();
+            empWorkExperience.GetComponent<TMP_Text>().text += employee.GetComponent<My_CV>().e_workExp[i] + "\n";
         }
+    }
+
+    public void ResetEmployee()
+    {
+        empName.GetComponent<Text>().text = "";
+        empPicture.GetComponent<Image>().sprite = null;
+        empHappiness.GetComponent<Slider>().value = 0;
+        empEfficiency.GetComponent<Slider>().value = 0;
+        empProductivity.GetComponent<Slider>().value = 0;
+        empBiography.GetComponent<TMP_Text>().text = "";
+        empSkill.GetComponent<TMP_Text>().text = "";
+        empEducation.GetComponent<TMP_Text>().text = "";
+        empWorkExperience.GetComponent<TMP_Text>().text = "";
+
+        SetCV(Employee_Manager.instance.listUnEmployees[0]);
     }
 }

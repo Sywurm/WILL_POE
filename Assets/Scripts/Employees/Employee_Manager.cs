@@ -21,6 +21,7 @@ public class Employee_Manager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        cvManager.SetCV(listUnEmployees[0]);
     }
 
     //This Region Manages all off the stats of the employees
@@ -34,28 +35,44 @@ public class Employee_Manager : MonoBehaviour
 
     public void GetEmployeeStats()
     {
-        employee = listUnEmployees[0];
-        if (employee != null && !employee.GetComponent<My_CV>().e_IsHired)
-        {
-            //Display the employee on the Ui
-        }
+        //employee = listUnEmployees[0];
+        //if (employee != null && !employee.GetComponent<My_CV>().e_IsHired)
+        //{
+        //    //Display the employee on the Ui
+        //}
     }
 
     public void HireEmployee()
     {
-        listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
-        //Generate the employee card
+        if (listUnEmployees[0] != null)
+        {
+            listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
+            //Generate the employee card
 
-        listUnassigned.Add(listUnEmployees[0]);
-        listUnEmployees.Remove(listUnEmployees[0]);
-        GetEmployeeStats();
+            listUnassigned.Add(listUnEmployees[0]);
+            listUnEmployees.Remove(listUnEmployees[0]);
+            cvManager.ResetEmployee();
+            GetEmployeeStats();
+        }
+        else
+        {
+            Debug.Log("No more employees");
+        }
     }
 
     //Thanos snap code
     public void DeclineEmployee()
     {
-        Destroy(listUnEmployees[0]);
-        GetEmployeeStats();
+        if (listUnEmployees[0] != null)
+        {
+            listUnEmployees.RemoveAt(0);
+            cvManager.ResetEmployee();
+            GetEmployeeStats();
+        }
+        else
+        {
+            Debug.Log("No more employees");
+        }
     }
 
     public void FireEmployee(GameObject emp)
