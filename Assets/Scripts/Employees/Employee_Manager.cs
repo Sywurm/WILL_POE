@@ -13,7 +13,7 @@ public class Employee_Manager : MonoBehaviour
     public CV_Manager cvManager;
 
     #region EmployeeLists
-    public List<GameObject> listUnassigned = new List<GameObject>();
+    //public List<GameObject> listUnassigned = new List<GameObject>();
     public List<GameObject> listAssigned = new List<GameObject>();
     public List<GameObject> listUnEmployees = new List<GameObject>();
     #endregion
@@ -48,7 +48,7 @@ public class Employee_Manager : MonoBehaviour
             listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
             //Generate the employee card
 
-            listUnassigned.Add(listUnEmployees[0]);
+            listAssigned.Add(listUnEmployees[0]);
             listUnEmployees.Remove(listUnEmployees[0]);
             cvManager.ResetEmployee();
             GetEmployeeStats();
@@ -76,14 +76,14 @@ public class Employee_Manager : MonoBehaviour
 
     public void FireEmployee(GameObject emp)
     {
-        for (int i = 0; i < listUnassigned.Count; i++)
-        {
-            if(listUnassigned[i] == emp)
-            {
-                listUnassigned.RemoveAt(i);
-                Destroy(emp);
-            }
-        }
+        //for (int i = 0; i < listUnassigned.Count; i++)
+        //{
+        //    if(listUnassigned[i] == emp)
+        //    {
+        //        listUnassigned.RemoveAt(i);
+        //        Destroy(emp);
+        //    }
+        //}
         for (int i = 0; i < listAssigned.Count; i++)
         {
             if(listAssigned[i] == emp)
@@ -95,18 +95,18 @@ public class Employee_Manager : MonoBehaviour
         
     }
 
-    public void MoveEmployee(GameObject empMove, Employee.EmployeePosition pos)
-    {
-        for (int i = 0; i < listUnassigned.Count; i++)
-        {
-            if(listUnassigned[i] == empMove && listUnassigned[i].gameObject.GetComponent<My_CV>().e_position != pos)
-            {
-                listUnassigned[i].gameObject.GetComponent<My_CV>().e_position = pos;
-                listAssigned.Add(listUnassigned[i]);
-                listUnassigned.RemoveAt(i);
-            }
-        }
-    }
+    //public void MoveEmployee(GameObject empMove, Employee.EmployeePosition pos)
+    //{
+    //    for (int i = 0; i < listUnassigned.Count; i++)
+    //    {
+    //        if(listUnassigned[i] == empMove && listUnassigned[i].gameObject.GetComponent<My_CV>().e_position != pos)
+    //        {
+    //            listUnassigned[i].gameObject.GetComponent<My_CV>().e_position = pos;
+    //            listAssigned.Add(listUnassigned[i]);
+    //            listUnassigned.RemoveAt(i);
+    //        }
+    //    }
+    //}
     #endregion
 
     public void GetDropdownValue()

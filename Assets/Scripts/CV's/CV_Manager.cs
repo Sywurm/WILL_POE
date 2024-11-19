@@ -59,6 +59,10 @@ public class CV_Manager : MonoBehaviour
         empEducation.GetComponent<TMP_Text>().text = "";
         empWorkExperience.GetComponent<TMP_Text>().text = "";
 
-        SetCV(Employee_Manager.instance.listUnEmployees[0]);
+        if(Employee_Manager.instance.listUnEmployees.Count > 0)
+        {
+            SetCV(Employee_Manager.instance.listUnEmployees[0]);
+        }
+        
     }
 }

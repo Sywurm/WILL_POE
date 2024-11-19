@@ -17,14 +17,14 @@ public class Employee
 
     public enum EmployeePosition
     {
-        Unassigned,
+        Unassigned = 0,
         GameDesign,
         GameArt,
         GameDevelopment,
-        Opperations,
-        Narrative,
-        Marketing,
-        Finace,
-        QualityAssurance
+        OpperationsDepartment,
+        NarrativeDepartment,
+        MarketingDepartment,
+        FinanceDepartment,
+        QualityAssuranceDepartment
     }
 }
