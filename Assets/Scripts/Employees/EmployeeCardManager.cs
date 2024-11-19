@@ -16,7 +16,7 @@ public class EmployeeCardManager : MonoBehaviour
     [SerializeField] List<My_CV> departmentEmployees = new List<My_CV>();
     [SerializeField] TMP_Dropdown departmentSelection;
 
-    Employee_Manager employeeManager;
+    [SerializeField] Employee_Manager employeeManager;
 
     [SerializeField] List<Employee.EmployeePosition> departmentTypes;
     [SerializeField]List<Employee.EmployeePosition> availableDepartmentTypes = new List<Employee.EmployeePosition>();
@@ -26,7 +26,6 @@ public class EmployeeCardManager : MonoBehaviour
     {
         departmentTypes.AddRange(Enum.GetValues(typeof(Employee.EmployeePosition)));
         availableDepartmentTypes.AddRange(departmentTypes);
-        employeeManager = Employee_Manager.instance;
         GetEmployees();
     }
 
@@ -39,21 +38,30 @@ public class EmployeeCardManager : MonoBehaviour
 
         departmentEmployees.Clear();
 
-        for (int i = 0; i < employeeManager.listAssigned.Count; i++)
+        if(employeeManager.listAssigned.Count != 0)
         {
-            My_CV selectedEmployee = employeeManager.listAssigned[i].GetComponent<My_CV>();
-            if (selectedEmployee.e_position == selectedPosition)
+            for (int i = 0; i < employeeManager.listAssigned.Count; i++)
             {
-                departmentEmployees.Add(selectedEmployee);
+                My_CV selectedEmployee = employeeManager.listAssigned[i].GetComponent<My_CV>();
+                if (selectedEmployee.e_position == selectedPosition)
+                {
+                    departmentEmployees.Add(selectedEmployee);
+                }
             }
-        }
 
-        DisplayEmployees();
+            DisplayEmployees();
+        }
+        else
+        {
+            ResetCards();
+        }
+        
     }
 
     private void DisplayEmployees()
     {
         ResetCards();
+        ValidateEmployeeMoves();
 
         for (int i = 0; i < departmentEmployees.Count; i++) 
         {
@@ -68,8 +76,26 @@ public class EmployeeCardManager : MonoBehaviour
             efficiency.value = departmentEmployees[i].e_Efficientcy / 100f;
             attituded.value = departmentEmployees[i].e_Happiness / 100f;
             productivity.value = departmentEmployees[i].e_Productivity / 100f;
-            reassignDropdown.value = (int)departmentEmployees[i].e_position;
+            //reassignDropdown.value = (int)departmentEmployees[i].e_position;
+
+            //string employeedepartmentenum = departmentEmployees[i].e_position.ToString();
+            //string modifiedEnum = Regex.Replace(employeedepartmentenum, "(?<!^)([A-Z])", " $1");
+            //Debug.Log("Modified enum: " + modifiedEnum);
+            for (int j = 0; j < reassignDropdown.options.Count; j++)
+            {
+                if (reassignDropdown.options[j].text.ToString().Replace(" ", "") == departmentEmployees[i].e_position.ToString())
+                {
+                    reassignDropdown.value = j;
+                    reassignDropdown.RefreshShownValue();
+                    break;
+                }
+
+            }
+
+
         }
+
+        
     }
 
     private void ResetCards()
@@ -82,7 +108,7 @@ public class EmployeeCardManager : MonoBehaviour
 
     #region Department movement and validation
 
-    //Gets the eployee to move from card
+    //Gets the eployee to move from card and moves them
     public void MoveEmployee(TMP_Dropdown _trigger)
     {
         GameObject employeeCardRef = _trigger.gameObject.transform.parent.gameObject;
@@ -100,23 +126,22 @@ public class EmployeeCardManager : MonoBehaviour
 
         string selectedDepartment = _trigger.options[_trigger.value].text.ToString().Replace(" ", "");
         int selectedDepartmentIndex = 0;
+        Debug.Log("Selected department:" + selectedDepartment);
 
         for (int i = 0; i < departmentTypes.Count; i++)
         {
-            Debug.Log("Selected department:" + selectedDepartment);
-            Debug.Log("Selecteddepartment type: " + departmentTypes[i].ToString());
+           
             if(selectedDepartment == departmentTypes[i].ToString())
             {
                 selectedDepartmentIndex = i;
 
-                Debug.Log(selectedDepartmentIndex);
+                Debug.Log("Selected department index: " +selectedDepartmentIndex);
                 break;
             }
         }
 
         departmentEmployees[cardIndex].e_position = (Employee.EmployeePosition)selectedDepartmentIndex;
         GetEmployees();
-        ValidateEmployeeMoves();
     }
 
     private void ValidateEmployeeMoves()
@@ -124,31 +149,37 @@ public class EmployeeCardManager : MonoBehaviour
         availableDepartmentTypes.Clear();
         availableDepartmentTypes.AddRange(departmentTypes);
 
+        int currentdepartmentSelection = departmentSelection.value;
         //Loop through all assigned employees
         if(employeeManager.listAssigned.Count != 0)
         {
-            for (int i = 0; i < availableDepartmentTypes.Count; i++)
+            for (int i = 0; i < departmentTypes.Count; i++)
             {
                 int count = 0;
-                for (int j = 0; j < employeeManager.listAssigned.Count; j++)
-                {
-                    My_CV selectedEmployee = employeeManager.listAssigned[j].GetComponent<My_CV>();
 
-                    if (selectedEmployee.e_position == availableDepartmentTypes[i])
+                if(i != currentdepartmentSelection)
+                {
+                    for (int j = 0; j < employeeManager.listAssigned.Count; j++)
                     {
-                        count++;
+                        My_CV selectedEmployee = employeeManager.listAssigned[j].GetComponent<My_CV>();
+
+                        if (selectedEmployee.e_position == departmentTypes[i])
+                        {
+                            count++;
+                        }
+
+                        if (count >= 4)
+                        {
+                            break;
+                        }
                     }
 
                     if (count >= 4)
                     {
-                        break;
+                        availableDepartmentTypes.RemoveAt(i);
                     }
                 }
-
-                if (count >= 4)
-                {
-                    availableDepartmentTypes.RemoveAt(i);
-                }
+                
             }
         }
         
@@ -177,8 +208,28 @@ public class EmployeeCardManager : MonoBehaviour
                 TMP_Dropdown.OptionData selectedOption = new TMP_Dropdown.OptionData(stringOptions[j].ToString());
                 selectedDropdown.options.Add(selectedOption);
             }
+
+            selectedDropdown.RefreshShownValue();
         }
     }
 
     #endregion
+
+    public void FireEmployee(Button _firebutton)
+    {
+        GameObject attatchedCard = _firebutton.gameObject.transform.parent.gameObject;
+        int cardIndex = 0;
+        for (int i = 0; i < employeeStatCards.Count; i++)
+        {
+            if (employeeStatCards[i] == attatchedCard)
+            {
+                cardIndex = i;
+                break;
+            }
+        }
+
+        Employee_Manager.instance.FireEmployee(departmentEmployees[cardIndex].gameObject);
+        GetEmployees();
+    }
+
 }

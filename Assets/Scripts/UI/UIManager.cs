@@ -8,15 +8,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject Employees;
     [SerializeField] GameObject Office;
     [SerializeField] GameObject CVMenu;
-    [SerializeField] bool isMenuActive;
+    GameObject activeMenu = null;
 
     public void showMainMenu()
     {
         if (MainMenu != null)
         {
-            if (isMenuActive == false)
+            
+            if (activeMenu != MainMenu)
             {
-                isMenuActive = true;
+                activeMenu = MainMenu;
                 MainMenu.SetActive(true);
                 Employees.SetActive(false);
                 Office.SetActive(false);
@@ -34,9 +35,10 @@ public class UIManager : MonoBehaviour
     {
         if (Employees != null)
         {
-            if(isMenuActive ==false)
+
+            if (activeMenu != Employees)
             {
-                isMenuActive = true;
+                activeMenu = Employees;
                 MainMenu.SetActive(false);
                 Employees.SetActive(true);
                 Office.SetActive(false);
@@ -56,9 +58,9 @@ public class UIManager : MonoBehaviour
     {
         if(Office != null)
         {
-            if (isMenuActive == false)
+            if (activeMenu != Office)
             {
-                isMenuActive = true;
+                activeMenu = Office;
                 MainMenu.SetActive(false);
                 Employees.SetActive(false);
                 Office.SetActive(true);
@@ -76,9 +78,9 @@ public class UIManager : MonoBehaviour
     {
         if (CVMenu != null)
         {
-            if (isMenuActive == false)
+            if (activeMenu != CVMenu)
             {
-                isMenuActive = true;
+                activeMenu = CVMenu;
                 MainMenu.SetActive(false);
                 Employees.SetActive(false);
                 Office.SetActive(false);
@@ -95,7 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void HideSelectedMenu()
     {
-        isMenuActive = false;
+        activeMenu = null;
 
         MainMenu.SetActive(false);
         Employees.SetActive(false);

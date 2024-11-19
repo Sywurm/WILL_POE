@@ -11,6 +11,8 @@ public class Employee_Manager : MonoBehaviour
     public TMP_Dropdown department;
     public GameObject employee;
     public CV_Manager cvManager;
+    [SerializeField] Button hireButton;
+    [SerializeField] GameObject CVpage;
 
     #region EmployeeLists
     //public List<GameObject> listUnassigned = new List<GameObject>();
@@ -22,7 +24,6 @@ public class Employee_Manager : MonoBehaviour
     {
         instance = this;
     }
-
     //This Region Manages all off the stats of the employees
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
@@ -43,7 +44,7 @@ public class Employee_Manager : MonoBehaviour
 
     public void HireEmployee()
     {
-        if (listUnEmployees[0] != null)
+        if (listUnEmployees.Count != 0)
         {
             listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
             //Generate the employee card
@@ -112,5 +113,58 @@ public class Employee_Manager : MonoBehaviour
     public void GetDropdownValue()
     {
         Debug.Log( department.value);
+    }
+
+    bool isDone = true;
+    int unassignedCount = 0;
+    private void FixedUpdate()
+    {
+        if(isDone && listAssigned.Count > 0)
+        {
+            isDone = false;
+            CheckUnassignedSpace();
+        }
+
+        if(listUnEmployees.Count > 0) 
+        {
+            CVpage.SetActive(true);
+        }
+        else
+        {
+            CVpage.SetActive(false);
+        }
+      
+    }
+
+    
+    public void CheckUnassignedSpace()
+    {
+        
+        for (int i = 0; i < listAssigned.Count; i++)
+        {
+            
+            My_CV selectedEmployee = listAssigned[i].gameObject.GetComponent<My_CV>();
+            if (selectedEmployee.e_position == Employee.EmployeePosition.Unassigned)
+            {
+                unassignedCount++;
+            }
+
+            if (unassignedCount >= 4)
+            {
+                hireButton.interactable = false;
+                break;
+            }
+            else
+            {
+                hireButton.interactable = true;
+            }
+
+        }
+        unassignedCount = 0;
+        isDone = true;
+
+
+
+
     }
 }
