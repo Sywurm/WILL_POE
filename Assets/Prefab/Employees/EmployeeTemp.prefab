@@ -253,7 +253,6 @@ MonoBehaviour:
   - Scripter
   - Godot
   - Vrage
-  - 'Pen and ink '
   - Paint
   - 3ds Max
   workExp:
@@ -269,7 +268,9 @@ MonoBehaviour:
   - 10 year
   e_Name: 
   e_Attitude: 0
+  e_position: 0
   e_EmployeeFoto: {fileID: 0}
+  e_IsHired: 0
   e_bio: 
   e_edu: []
   e_skills: []

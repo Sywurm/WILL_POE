@@ -33,7 +33,7 @@ public class CV_Manager : MonoBehaviour
         
         for(int i = 0; i < employee.GetComponent<My_CV>().e_skills.Count; i++)
         {
-            empSkill.GetComponent<TMP_Text>().text += i + 1 + employee.GetComponent<My_CV>().e_skills[i] + "\n";
+            empSkill.GetComponent<TMP_Text>().text += i + 1 + " - " + employee.GetComponent<My_CV>().e_skills[i] + "\n";
         }        
 
         for(int i = 0; i < employee.GetComponent<My_CV>().e_edu.Count; i++)

@@ -24,6 +24,25 @@ public class Employee_Manager : MonoBehaviour
     {
         instance = this;
     }
+    private void FixedUpdate()
+    {
+        if(isDone && listAssigned.Count > 0)
+        {
+            isDone = false;
+            CheckUnassignedSpace();
+        }
+
+        if(listUnEmployees.Count > 0) 
+        {
+            CVpage.SetActive(true);
+        }
+        else
+        {
+            CVpage.SetActive(false);
+        }
+      
+    }
+
     //This Region Manages all off the stats of the employees
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
@@ -48,8 +67,9 @@ public class Employee_Manager : MonoBehaviour
         {
             listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
             //Generate the employee card
-
             listAssigned.Add(listUnEmployees[0]);
+            GameManager.instance._OfficeHappiness += listUnEmployees[0].GetComponent<My_CV>().e_Happiness;
+            GameManager.instance._OfficeEfficiency += listUnEmployees[0].GetComponent<My_CV>().e_Efficientcy;
             listUnEmployees.Remove(listUnEmployees[0]);
             cvManager.ResetEmployee();
             GetEmployeeStats();
@@ -89,6 +109,8 @@ public class Employee_Manager : MonoBehaviour
         {
             if(listAssigned[i] == emp)
             {
+                GameManager.instance._OfficeHappiness -= emp.GetComponent<My_CV>().e_Happiness;
+                GameManager.instance._OfficeEfficiency -= emp.GetComponent<My_CV>().e_Efficientcy;
                 listAssigned.RemoveAt(i);
                 Destroy(emp);
             }
@@ -110,32 +132,13 @@ public class Employee_Manager : MonoBehaviour
     //}
     #endregion
 
+    bool isDone = true;
+    int unassignedCount = 0;
+
     public void GetDropdownValue()
     {
         Debug.Log( department.value);
     }
-
-    bool isDone = true;
-    int unassignedCount = 0;
-    private void FixedUpdate()
-    {
-        if(isDone && listAssigned.Count > 0)
-        {
-            isDone = false;
-            CheckUnassignedSpace();
-        }
-
-        if(listUnEmployees.Count > 0) 
-        {
-            CVpage.SetActive(true);
-        }
-        else
-        {
-            CVpage.SetActive(false);
-        }
-      
-    }
-
     
     public void CheckUnassignedSpace()
     {

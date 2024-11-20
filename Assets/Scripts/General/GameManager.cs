@@ -6,12 +6,14 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class GameManager : MonoBehaviour
 {
     #region Variables
+    public static GameManager instance;
+
     #region OfficeStates
     [Tooltip("This Value Represents the x rotation of the directional light (Sun).")]
     [SerializeField][Range(0, 180)] private float sunRotationX;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
-    public float _OfficeHappitness;
+    public float _OfficeHappiness;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
     public float _OfficeEfficiency;
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
     private float currentRotation;
     private float currentHour;
 
-    
+
 
 
     #endregion
@@ -65,6 +67,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Unity Functions
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

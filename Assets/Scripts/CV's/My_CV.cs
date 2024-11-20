@@ -56,27 +56,34 @@ public class My_CV : MonoBehaviour
         //randomise Bio
         int rngBio = Random.Range(0, biography.Count);
         e_bio = biography[rngBio];
+
         //Randomise Education
-        int randomAmount = Random.Range(0,education.Count);
+        int randomAmount = Random.Range(1,education.Count);
         for (int i = 0; i < randomAmount; i++)
         {
             int rngEducation = Random.Range(0, education.Count);
-            e_edu.Add(education[rngEducation]);
+            if (!e_edu.Contains(education[rngEducation]))
+            {
+                e_edu.Add(education[rngEducation]);
+            }
         }
-        //Randomise Skills
-        randomAmount = Random.Range(0,skills.Count);
 
+        //Randomise Skills
+        randomAmount = Random.Range(1,skills.Count);
         for(int i = 0;i < randomAmount;i++)
         {
             int rngSkills = Random.Range(0,skills.Count);
-            e_skills.Add(skills[rngSkills]);
+            if (!e_skills.Contains(skills[rngSkills]))
+            {
+                e_skills.Add(skills[rngSkills]);
+            }
         }
 
         //Randomise Work experience
-        randomAmount = Random.Range(0, workExp.Count);
-        for( int i = 0;i<randomAmount ; i++)
+        //randomAmount = Random.Range(0, workExp.Count);
+        int rngWorkExp = Random.Range(0, workExp.Count);
+        if (!e_workExp.Contains(workExp[rngWorkExp]))
         {
-            int rngWorkExp = Random.Range(0, workExp.Count);
             e_workExp.Add(workExp[rngWorkExp]);
         }
 
