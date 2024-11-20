@@ -162,7 +162,16 @@ public class GameManager : MonoBehaviour
 
         }
 
-        TimeTMP.text = ((int)currentTime).ToString();
+        //Note Time Text is for developer debugging to show how long a day is. 
+        //Time Text is not required for players to be able to play the game.
+        if(TimeTMP != null)
+        {
+            TimeTMP.text = ((int)currentTime).ToString();
+        }
+        else
+        {
+            Debug.Log("No Time Text Present");
+        }
         HourTMP.text = $"{(int)hour} : {(minuets).ToString("D2")}";
         DayTMP.text = dayOfWeek.ToString();
     }
