@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
     public float _OfficeState;
+
+    [SerializeField] Slider OfficeHappinessSlider;
+    [SerializeField] Slider OfficeEfficencySlider;
     #endregion
 
     #region TimeManagement
@@ -93,6 +97,10 @@ public class GameManager : MonoBehaviour
                 timeIsPaused = false;
             }
         }
+
+        OfficeHappinessSlider.value = _OfficeHappiness;
+        OfficeEfficencySlider.value = _OfficeEfficiency;
+
     }
     // Update is called once per frame
     void FixedUpdate()
