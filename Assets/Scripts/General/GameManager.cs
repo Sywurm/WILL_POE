@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField][Range(0, 60)] private float currentTime = 0f;
     [SerializeField] private float multiplier = 1f;
     [SerializeField][Range(8, 17)] private int hour = 8;
+    [SerializeField] public int hourPublic = 8;
     [SerializeField] private int minuets = 00;
     [SerializeField][Range(1, 5)] private int day = 0;
     [SerializeField] public int dayPublic = 0;
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI DayTMP;
 
     [SerializeField] GameObject sun;
+    [SerializeField] public bool dayJustStarted = false;
+    [SerializeField] private bool dayEnded = false;
 
     private enum DayOfWeek
     {
@@ -103,6 +107,7 @@ public class GameManager : MonoBehaviour
         OfficeEfficencySlider.value = _OfficeEfficiency;
 
         dayPublic = day;
+        hourPublic = hour;
 
     }
     // Update is called once per frame
@@ -111,7 +116,7 @@ public class GameManager : MonoBehaviour
         TimeManager();
         RotateDirectionalLight();
 
-
+        DayStartedFunc();
 
     }
     #endregion
@@ -193,6 +198,26 @@ public class GameManager : MonoBehaviour
         DayTMP.text = dayOfWeek.ToString();
     }
 
+    private void DayStartedFunc()
+    {
+        if( hour == 8 && dayEnded == true)
+        {
+            StartCoroutine(DayJustStartedEnumerator());
+            dayEnded = false;
+        }
+
+        if (hour == 16)
+        {
+            dayEnded = true;
+        }
+    }
+
+    IEnumerator DayJustStartedEnumerator()
+    {
+        dayJustStarted = true;
+        yield return new WaitForSeconds(5);
+        dayJustStarted = false;
+    }
 
     #endregion
 

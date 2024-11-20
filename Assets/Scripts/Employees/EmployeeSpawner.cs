@@ -8,12 +8,14 @@ public class EmployeeSpawner : MonoBehaviour
     [SerializeField] GameObject employeePrefab;
     [Header("Spawn Settings")]
     [SerializeField] float spawnDelayMin = 15;
-    [SerializeField] float spawnDelayMax = 45;
+    [SerializeField] float spawnDelayMax = 30;
     [SerializeField] int spawnAmount;
     public List<GameObject> employeeObjects = new List<GameObject>();
     public static EmployeeSpawner instance;
 
-    float spawnDelay;
+    [SerializeField] bool canSpawn = false;
+
+    float spawnDelay = 1;
 
     private void Awake()
     {
@@ -27,18 +29,24 @@ public class EmployeeSpawner : MonoBehaviour
 
     private void Update()
     {
-        SetSpawnAmount();
+        if (GameManager.instance.dayJustStarted == true)
+        {
+            SetSpawnAmount();
+        }
+
     }
 
     IEnumerator spawnEmployee()
     {
-        SetSpawnAmount();
-        if (spawnAmount != 0)
+        yield return new WaitForSeconds(spawnDelay);
+        Debug.Log(spawnDelay.ToString());
+        if (spawnAmount != 0 && canSpawn == true)
         {
             spawnAmount--;
             GameObject temp = Instantiate(employeePrefab, this.transform.position, Quaternion.identity);
             Employee_Manager.instance.SetEmployees(temp);
             Debug.Log("Employee Spawned");
+            canSpawn = false;
         }
 
         yield return new WaitForSeconds(spawnDelay);
@@ -46,6 +54,7 @@ public class EmployeeSpawner : MonoBehaviour
         //I like the idea of the spawning happening between a somewhat random time.
         //Taking into consideration each hour is 30 seconds, I have set the min to 15 / max to 45 so that there is a possibly large delay
         spawnDelay = Random.Range(spawnDelayMin, spawnDelayMax);
+        canSpawn = true;
         StartCoroutine(spawnEmployee());
     }
 
