@@ -35,6 +35,11 @@ public class ButtonManager : MonoBehaviour
     {
         SfxManager.Instance.PlaySound("MouseClickSFX");
     }
+    
+    public void PlayPaperCrumpleSound()
+    {
+        SfxManager.Instance.PlaySound("PaperCrumple");
+    }
 
     public void ToggleGameObjectActive(GameObject toggle)
     {
