@@ -858,6 +858,7 @@ MonoBehaviour:
   hour: 8
   minuets: 8
   day: 1
+  dayPublic: 0
   timeIsPaused: 0
   TimeTMP: {fileID: 2010069732}
   HourTMP: {fileID: 898738801}
@@ -9492,6 +9493,7 @@ MonoBehaviour:
   Employees: {fileID: 1023207328}
   Office: {fileID: 543551256}
   CVMenu: {fileID: 169350552}
+  activeMenu: {fileID: 0}
 --- !u!4 &603424644
 Transform:
   m_ObjectHideFlags: 0
@@ -14485,9 +14487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   employeePrefab: {fileID: 8898220687798051130, guid: fcc3060bab8db484090c37ce23d99e24, type: 3}
-  spawnDelayMin: 10
-  spawnDelayMax: 25
-  spawnAmount: 8
+  spawnDelayMin: 15
+  spawnDelayMax: 30
+  spawnAmount: 2
   employeeObjects: []
 --- !u!4 &686377729
 Transform:
@@ -39017,7 +39019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2010069731
 RectTransform:
   m_ObjectHideFlags: 0

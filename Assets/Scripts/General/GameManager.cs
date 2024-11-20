@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
     [SerializeField][Range(8, 17)] private int hour = 8;
     [SerializeField] private int minuets = 00;
     [SerializeField][Range(1, 5)] private int day = 0;
+    [SerializeField] public int dayPublic = 0;
 
-    [SerializeField] bool timeIsPaused = false;
+    [SerializeField] public bool timeIsPaused = false;
 
     [SerializeField] TextMeshProUGUI TimeTMP;
     [SerializeField] TextMeshProUGUI HourTMP;
@@ -83,23 +84,25 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("Space Pressed");
-            if (timeIsPaused == false)
-            {
-                Debug.Log("Time Paused");
-                timeIsPaused = true;
-            }
-            else if (timeIsPaused == true)
-            {
-                Debug.Log("Time unPaused");
-                timeIsPaused = false;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Debug.Log("Space Pressed");
+        //    if (timeIsPaused == false)
+        //    {
+        //        Debug.Log("Time Paused");
+        //        timeIsPaused = true;
+        //    }
+        //    else if (timeIsPaused == true)
+        //    {
+        //        Debug.Log("Time unPaused");
+        //        timeIsPaused = false;
+        //    }
+        //}
 
         OfficeHappinessSlider.value = _OfficeHappiness;
         OfficeEfficencySlider.value = _OfficeEfficiency;
+
+        dayPublic = day;
 
     }
     // Update is called once per frame
@@ -126,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            
+            //Time is paused
         }
 
 

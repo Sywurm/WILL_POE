@@ -8,7 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject Employees;
     [SerializeField] GameObject Office;
     [SerializeField] GameObject CVMenu;
-    GameObject activeMenu = null;
+    [SerializeField] GameObject activeMenu = null;
+
+    private void Update()
+    {
+        PauseTime();
+    }
 
     public void showMainMenu()
     {
@@ -94,7 +99,6 @@ public class UIManager : MonoBehaviour
         
     }
 
-
     public void HideSelectedMenu()
     {
         activeMenu = null;
@@ -104,5 +108,17 @@ public class UIManager : MonoBehaviour
         Office.SetActive(false);
         CVMenu.SetActive(false);
 
+    }
+
+    private void PauseTime()
+    {
+        if(CVMenu.gameObject.activeSelf || MainMenu.gameObject.activeSelf)
+        {
+            GameManager.instance.timeIsPaused = true;
+        }
+        else
+        {
+            GameManager.instance.timeIsPaused = false;
+        }
     }
 }
