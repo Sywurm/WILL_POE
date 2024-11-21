@@ -2538,8 +2538,9 @@ GameObject:
   - component: {fileID: 5230497999555023852}
   - component: {fileID: 2558033928722284514}
   - component: {fileID: 7439829519853288383}
-  - component: {fileID: 1495381433103665256}
   - component: {fileID: 600074112317553295}
+  - component: {fileID: 1495381433103665256}
+  - component: {fileID: 7080357820020310649}
   m_Layer: 0
   m_Name: Character3move
   m_TagString: Untagged
@@ -2658,6 +2659,33 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &600074112317553295
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658115972808033841}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1495381433103665256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,33 +2715,151 @@ MonoBehaviour:
   sittingRotationY: -90.305
   sittingHeightAdjustment: 0
   departmentChairs: []
---- !u!54 &600074112317553295
-Rigidbody:
+--- !u!114 &7080357820020310649
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6658115972808033841}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ba94253d6c868459f1b1ba1b0ca00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  names:
+  - Kimberley Meadows
+  - Cecily Flores
+  - Eleanor Richards
+  - Valentina Juarez
+  - Kate Robbins
+  - Nataniel Bryant
+  - Alanna Burke
+  - Rhiannon Ramos
+  - Shelby Martin
+  - Howard Tran
+  - Troy Beck
+  - Jaden Mccormick
+  - Krystal Buck
+  - Joseph Sherman
+  - Victoria Yoder
+  - Tamara Fuller
+  - Delilah Gay
+  - Leonie Boyd
+  - Liberty Dyer
+  - Milan Villanueva
+  photos:
+  - {fileID: 21300000, guid: 029e9567ea8f5c04585417616582208a, type: 3}
+  - {fileID: 21300000, guid: 682ed4e7744e20442904dbf03b1d20a0, type: 3}
+  - {fileID: 21300000, guid: d36ff232b49d7444d9df00c4b476bf1b, type: 3}
+  biography:
+  - A trailblazer in the early video game industry, they helped create iconic franchises
+    through character, environment, and mechanics design. Their innovative contributions
+    have been widely celebrated, earning them numerous awards and solidifying their
+    reputation as a visionary force in game design.
+  - 'A leader in digital and analog game design, their work spans video games, board
+    games, and interactive installations. Known for blending game theory with creativity,
+    they continually push artistic boundaries while sharing their expertise through
+    academic lectures and publications, inspiring the next generation of game creators.  '
+  - Celebrated for their artistic vision and technical skills, they have contributed
+    to visually stunning games through 3D modeling, animation, and effects. With
+    a collaborative spirit, they work closely with teams to bring fantastical worlds
+    and characters to life, leaving a growing mark on the gaming industry.
+  - "A key figure in the gaming industry\u2019s formative years, they helped shape
+    early franchises through expertise in programming, design, and management. Recognized
+    for their innovative contributions, they have worked on numerous high-profile
+    projects, influencing the evolution of modern game development."
+  - Renowned for immersive game design and storytelling, they have created engaging
+    experiences across various genres. Their collaborative approach, working with
+    artists, writers, and developers, ensures their creative visions are brought
+    to life, making them a respected leader in the industry.
+  - Equally at home in indie and mainstream projects, they have developed a diverse
+    portfolio of self-funded and commercial games. Known for their mastery of game
+    mechanics and innovation, they actively contribute to the gaming community through
+    talks and workshops, fostering creativity and growth.
+  - Praised for their technical expertise and artistic vision, they specialize in
+    creating visually compelling games. Their skills in 3D modeling, animation, and
+    effects, paired with a collaborative mindset, have positioned them as a rising
+    star in the gaming industry.
+  - A champion for indie studios, they specialize in securing funding, budgeting,
+    and investments for game projects. With extensive experience navigating industry
+    financial complexities, they have guided numerous developers toward successful,
+    sustainable projects, earning respect as a trusted advisor.
+  - An expert in managing finances for major studios, they excel in budgeting, forecasting,
+    and investor relations. Their strategic oversight ensures projects remain on
+    schedule and within budget, playing a pivotal role in the success of high-profile
+    game releases.
+  - Influential financial professional is known for their expertise in managing the
+    finances of large game development studios. They have a background in accounting
+    and finance, and their role often involves overseeing budgets, financial forecasting,
+    and managing investor relations. Their work is crucial in ensuring that game
+    development projects stay on track and within budget.
+  - Known for their strategic vision, they have managed the financial success of
+    leading game projects. Their expertise in investment strategy, financial analysis,
+    and project management ensures creative ambitions are balanced with fiscal realities,
+    delivering long-term industry impact.
+  - Beginning their career with text-based games, they earned acclaim for creating
+    compelling characters and intricate plots. Their storytelling talents have enhanced
+    numerous high-profile games, leaving an indelible mark on the industry by weaving
+    narratives that captivate and engage players.
+  - A pioneering game writer began their career by crafting narratives for early
+    text-based adventure games. They have a talent for creating compelling characters
+    and intricate plots that draw players into the game world. Over the years, they
+    have worked on numerous high-profile projects, earning recognition for their
+    ability to weave engaging stories that enhance the gaming experience.
+  - An expert in interactive storytelling, they craft branching narratives that give
+    players meaningful choices. Collaborating closely with designers and developers,
+    their work integrates story and gameplay seamlessly, earning them recognition
+    across various game genres.
+  - Known for crafting memorable stories, they excel in dialogue, character arcs,
+    and plot structure. Their work balances emotional depth with player agency, creating
+    interactive experiences that resonate deeply with audiences and redefine narrative
+    possibilities in gaming.
+  education:
+  - Secondary school
+  - Tersiary school
+  - Online Course
+  - Degree
+  - Diploma
+  - Certeficate
+  - Self Taught
+  skills:
+  - Blender
+  - Unity
+  - Unreal
+  - Krita
+  - Z brush
+  - Fade in
+  - Word
+  - Excel
+  - Scripter
+  - Godot
+  - Vrage
+  - Paint
+  - 3ds Max
+  workExp:
+  - 1 year
+  - 2 years
+  - 3 years
+  - 4 years
+  - 5 years
+  - 6 years
+  - 7 years
+  - 8 years
+  - 9 years
+  - 10 years
+  e_Name: 
+  e_Attitude: 0
+  e_position: 0
+  e_EmployeeFoto: {fileID: 21300000, guid: ee7990d21ba18cd448744e90048bec4e, type: 3}
+  e_IsHired: 0
+  e_bio: 
+  e_edu: []
+  e_skills: []
+  e_workExp: []
+  e_Happiness: 0
+  e_Efficientcy: 0
+  e_Productivity: 0
 --- !u!1 &6727986958227484509
 GameObject:
   m_ObjectHideFlags: 0

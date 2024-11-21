@@ -66,12 +66,14 @@ public class EmployeeCardManager : MonoBehaviour
         for (int i = 0; i < departmentEmployees.Count; i++) 
         {
             employeeStatCards[i].SetActive(true);
+            Image employeeIcon = employeeStatCards[i].transform.GetChild(0).GetComponent<Image>();
             TMP_Text nameText = employeeStatCards[i].transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>();
             Slider efficiency = employeeStatCards[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Slider>();
             Slider attituded = employeeStatCards[i].transform.GetChild(2).transform.GetChild(0).GetComponent<Slider>();
             Slider productivity = employeeStatCards[i].transform.GetChild(3).transform.GetChild(0).GetComponent<Slider>();
             TMP_Dropdown reassignDropdown = employeeStatCards[i].transform.GetChild(5).GetComponent<TMP_Dropdown>();
-
+            
+            employeeIcon.sprite = departmentEmployees[i].e_EmployeeFoto;
             nameText.text = departmentEmployees[i].e_Name;
             efficiency.value = departmentEmployees[i].e_Efficientcy / 100f;
             attituded.value = departmentEmployees[i].e_Happiness / 100f;

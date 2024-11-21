@@ -43,7 +43,7 @@ public class EmployeeSpawner : MonoBehaviour
         if (spawnAmount != 0 && canSpawn == true && GameManager.instance.timeIsPaused == false)
         {
             spawnAmount--;
-            GameObject temp = Instantiate(employeePrefab, this.transform.position, Quaternion.identity);
+            GameObject temp = Instantiate(employeeObjects[Random.Range(0, employeeObjects.Count)], this.transform.position, Quaternion.identity);
             Employee_Manager.instance.SetEmployees(temp);
             Debug.Log("Employee Spawned");
             canSpawn = false;

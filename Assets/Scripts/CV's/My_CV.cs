@@ -7,7 +7,6 @@ public class My_CV : MonoBehaviour
 {
     [Header("List of available Items", order = 0)]
     [SerializeField] private List<string> names;
-    [SerializeField] private List<Sprite> photos;
     [SerializeField] private List<string> biography;
     [SerializeField] private List<string> education;
     [SerializeField] private List<string> skills;
@@ -34,9 +33,6 @@ public class My_CV : MonoBehaviour
         //Randomise Names
         int rngName = Random.Range(0, names.Count);
         e_Name = names[rngName];
-
-        int rngPhoto = Random.Range(0, photos.Count);
-        e_EmployeeFoto = photos[rngPhoto];
 
         //chooses random Attitude
         int rngAttitude = Random.Range(0, 6);

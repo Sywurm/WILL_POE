@@ -146,33 +146,31 @@ public class Employee_Manager : MonoBehaviour
     
     public void CheckUnassignedSpace()
     {
-        
-        for (int i = 0; i < listAssigned.Count; i++)
+        if(listAssigned.Count > 0) 
         {
-            
-            My_CV selectedEmployee = listAssigned[i].gameObject.GetComponent<My_CV>();
-            if (selectedEmployee.e_position == Employee.EmployeePosition.Unassigned)
+            for (int i = 0; i < listAssigned.Count; i++)
             {
-                unassignedCount++;
-            }
 
-            if (unassignedCount >= 4)
-            {
-                hireButton.interactable = false;
-                break;
-            }
-            else
-            {
-                hireButton.interactable = true;
-            }
+                My_CV selectedEmployee = listAssigned[i].gameObject.GetComponent<My_CV>();
+                if (selectedEmployee.e_position == Employee.EmployeePosition.Unassigned)
+                {
+                    unassignedCount++;
+                }
 
+                if (unassignedCount >= 4)
+                {
+                    hireButton.interactable = false;
+                    break;
+                }
+                else
+                {
+                    hireButton.interactable = true;
+                }
+
+            }
+            unassignedCount = 0;
+            isDone = true;
         }
-        unassignedCount = 0;
-        isDone = true;
-
-
-
-
     }
 
     private void CVNotification()
