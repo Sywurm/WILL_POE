@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
 
         MainMenu.SetActive(false);
         Employees.SetActive(false);
-        Office.SetActive(false);
+        Office.SetActive(true);
         CVMenu.SetActive(false);
 
     }
