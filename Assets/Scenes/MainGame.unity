@@ -856,6 +856,7 @@ MonoBehaviour:
   currentTime: 0
   multiplier: 1
   hour: 8
+  hourPublic: 8
   minuets: 8
   day: 1
   dayPublic: 0
@@ -864,6 +865,8 @@ MonoBehaviour:
   HourTMP: {fileID: 898738801}
   DayTMP: {fileID: 1625208354}
   sun: {fileID: 1280443788}
+  dayJustStarted: 0
+  dayEnded: 0
 --- !u!4 &42480394
 Transform:
   m_ObjectHideFlags: 0
@@ -14491,6 +14494,7 @@ MonoBehaviour:
   spawnDelayMax: 30
   spawnAmount: 2
   employeeObjects: []
+  canSpawn: 0
 --- !u!4 &686377729
 Transform:
   m_ObjectHideFlags: 0
@@ -40780,12 +40784,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 833583163}
   - {fileID: 169350553}
   - {fileID: 416950085}
   - {fileID: 1023207329}
   - {fileID: 543551257}
   - {fileID: 1245446257}
-  - {fileID: 833583163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
