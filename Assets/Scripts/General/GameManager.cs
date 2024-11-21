@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region TimeManagement
-    [SerializeField][Range(0,60)] private float seconds = 0f;
+    [SerializeField][Range(0, 60)] private float seconds = 0f;
     [SerializeField][Range(0, 60)] private float currentTime = 0f;
     [SerializeField] private float multiplier = 1f;
     [SerializeField][Range(8, 17)] private int hour = 8;
@@ -138,24 +138,24 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if(currentTime >= 30f)
+        if (currentTime >= 30f)
         {
             seconds = 0f;
             currentTime = 0f;
 
-            hour +=1;
+            hour += 1;
         }
 
-        if(currentTime >= 16 )
+        if (currentTime >= 16)
         {
             minuets = 30;
         }
-        else 
+        else
         {
             minuets = 00;
         }
 
-        if(hour >= 17 )
+        if (hour >= 17)
         {
             hour = 8;
             day += 1;
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
             case 5:
                 dayOfWeek = DayOfWeek.Friday;
                 break;
-                default:
+            default:
                 dayOfWeek = DayOfWeek.Monday;
                 break;
 
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
 
         //Note Time Text is for developer debugging to show how long a day is. 
         //Time Text is not required for players to be able to play the game.
-        if(TimeTMP != null)
+        if (TimeTMP != null)
         {
             TimeTMP.text = ((int)currentTime).ToString();
         }
@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
 
     private void DayStartedFunc()
     {
-        if( hour == 8 && dayEnded == true)
+        if (hour == 8 && dayEnded == true)
         {
             StartCoroutine(DayJustStartedEnumerator());
             dayEnded = false;
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     {
         //This switch case rotates the sun according to the hour using the seconds as the lerp time.
         //The rotation happens over 15 seconds during specified time changing hours.
-        switch(hour)
+        switch (hour)
         {
             case 8:
 
