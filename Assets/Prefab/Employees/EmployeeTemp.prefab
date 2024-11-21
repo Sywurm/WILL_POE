@@ -139,7 +139,10 @@ MonoBehaviour:
   - Leonie Boyd
   - Liberty Dyer
   - Milan Villanueva
-  photos: []
+  photos:
+  - {fileID: 21300000, guid: 029e9567ea8f5c04585417616582208a, type: 3}
+  - {fileID: 21300000, guid: 682ed4e7744e20442904dbf03b1d20a0, type: 3}
+  - {fileID: 21300000, guid: d36ff232b49d7444d9df00c4b476bf1b, type: 3}
   biography:
   - A trailblazer in the early video game industry, they helped create iconic franchises
     through character, environment, and mechanics design. Their innovative contributions
