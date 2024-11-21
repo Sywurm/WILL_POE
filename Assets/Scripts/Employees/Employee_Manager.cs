@@ -13,7 +13,7 @@ public class Employee_Manager : MonoBehaviour
     public CV_Manager cvManager;
     [SerializeField] Button hireButton;
     [SerializeField] GameObject CVpage;
-
+    [SerializeField] GameObject notification;
     #region EmployeeLists
     //public List<GameObject> listUnassigned = new List<GameObject>();
     public List<GameObject> listAssigned = new List<GameObject>();
@@ -47,7 +47,9 @@ public class Employee_Manager : MonoBehaviour
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
     {
-        listUnEmployees.Add(emp);        
+        listUnEmployees.Add(emp);
+        CVNotification();
+        PlayNotificationSound();
         //GetEmployeeStats();
     }
 
@@ -71,6 +73,7 @@ public class Employee_Manager : MonoBehaviour
             GameManager.instance._OfficeHappiness += listUnEmployees[0].GetComponent<My_CV>().e_Happiness / listAssigned.Count;
             GameManager.instance._OfficeEfficiency += listUnEmployees[0].GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
             listUnEmployees.Remove(listUnEmployees[0]);
+            CVNotification();
             cvManager.ResetEmployee();
             GetEmployeeStats();
         }
@@ -86,6 +89,7 @@ public class Employee_Manager : MonoBehaviour
         if (listUnEmployees[0] != null)
         {
             listUnEmployees.RemoveAt(0);
+            CVNotification();
             cvManager.ResetEmployee();
             GetEmployeeStats();
         }
@@ -170,4 +174,23 @@ public class Employee_Manager : MonoBehaviour
 
 
     }
+
+    private void CVNotification()
+    {
+        if(listUnEmployees.Count > 0) 
+        {
+            notification.SetActive(true);
+        }
+        else
+        {
+            notification.SetActive(false);
+        }
+    }
+
+    private void PlayNotificationSound()
+    {
+
+    }
+
+
 }

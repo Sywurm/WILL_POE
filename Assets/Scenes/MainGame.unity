@@ -38628,6 +38628,7 @@ MonoBehaviour:
   cvManager: {fileID: 219770445051087182}
   hireButton: {fileID: 2006556693}
   CVpage: {fileID: 5291213196675052469}
+  notification: {fileID: 1900572057}
   listAssigned: []
   listUnEmployees: []
 --- !u!4 &1983838370
