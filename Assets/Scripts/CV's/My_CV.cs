@@ -29,7 +29,7 @@ public class My_CV : MonoBehaviour
     public float e_Productivity;
 
     [Header("Sitting")]
-    public Chair currentChair;
+    public Chair currentChair = null;
     public int sittingModelPos;
     private void Awake()
     {

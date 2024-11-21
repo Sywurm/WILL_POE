@@ -147,7 +147,7 @@ public class EmployeeCardManager : MonoBehaviour
         Employee.EmployeePosition newPosition = (Employee.EmployeePosition)selectedDepartmentIndex;
 
         
-        if(departmentEmployees[cardIndex].currentChair!= null)
+        if(departmentEmployees[cardIndex].currentChair != null)
         {
             departmentEmployees[cardIndex].currentChair.ResetChair();
         }

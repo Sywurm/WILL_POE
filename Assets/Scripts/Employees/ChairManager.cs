@@ -21,12 +21,14 @@ public class ChairManager : MonoBehaviour
                     employee.gameObject.SetActive(false);
                     employee.currentChair = currentChair;
                     currentChair.SetEmployee(employee.sittingModelPos);
+                    break;
                 }
             }
         }
         else
         {
             employee.currentChair = null;
+            employee.gameObject.SetActive(true);
         }
     }
 }

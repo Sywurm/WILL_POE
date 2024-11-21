@@ -1356,6 +1356,8 @@ MonoBehaviour:
   e_Happiness: 0
   e_Efficientcy: 0
   e_Productivity: 0
+  currentChair: {fileID: 0}
+  sittingModelPos: 5
 --- !u!1 &3045132171844797656
 GameObject:
   m_ObjectHideFlags: 0
