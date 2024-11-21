@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
 
 public class Employee_Manager : MonoBehaviour
 {
@@ -14,8 +12,12 @@ public class Employee_Manager : MonoBehaviour
     [SerializeField] Button hireButton;
     [SerializeField] GameObject CVpage;
     [SerializeField] GameObject notification;
+
+    // Chair references
+    public List<GameObject> chairs; // List to hold chair references
+    private List<bool> chairOccupiedStatus; // List to track chair occupancy status
+
     #region EmployeeLists
-    //public List<GameObject> listUnassigned = new List<GameObject>();
     public List<GameObject> listAssigned = new List<GameObject>();
     public List<GameObject> listUnEmployees = new List<GameObject>();
     #endregion
@@ -23,16 +25,22 @@ public class Employee_Manager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        chairOccupiedStatus = new List<bool>(); // Initialize the chair status list
+        foreach (var chair in chairs)
+        {
+            chairOccupiedStatus.Add(false); // Initially, all chairs are unoccupied
+        }
     }
+
     private void FixedUpdate()
     {
-        if(isDone && listAssigned.Count > 0)
+        if (isDone && listAssigned.Count > 0)
         {
             isDone = false;
             CheckUnassignedSpace();
         }
 
-        if(listUnEmployees.Count > 0) 
+        if (listUnEmployees.Count > 0)
         {
             CVpage.SetActive(true);
         }
@@ -40,50 +48,114 @@ public class Employee_Manager : MonoBehaviour
         {
             CVpage.SetActive(false);
         }
-      
     }
 
-    //This Region Manages all off the stats of the employees
+    // This Region Manages all of the stats of the employees
     #region Getting the Employee Stats
     public void SetEmployees(GameObject emp)
     {
         listUnEmployees.Add(emp);
         CVNotification();
         PlayNotificationSound();
-        //GetEmployeeStats();
     }
 
     public void GetEmployeeStats()
     {
         cvManager.ResetEmployee();
-        //employee = listUnEmployees[0];
-        //if (employee != null && !employee.GetComponent<My_CV>().e_IsHired)
-        //{
-        //    //Display the employee on the Ui
-        //}
     }
 
     public void HireEmployee()
     {
-        if (listUnEmployees.Count != 0)
+        if (listUnEmployees.Count > 0)
         {
-            listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
-            //Generate the employee card
-            listAssigned.Add(listUnEmployees[0]);
-            GameManager.instance._OfficeHappiness += listUnEmployees[0].GetComponent<My_CV>().e_Happiness / listAssigned.Count;
-            GameManager.instance._OfficeEfficiency += listUnEmployees[0].GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
-            listUnEmployees.Remove(listUnEmployees[0]);
-            CVNotification();
-            cvManager.ResetEmployee();
-            GetEmployeeStats();
+            // Get the employee prefab from the unassigned list
+            GameObject employeePrefab = listUnEmployees[0];
+
+            // Find an available chair and assign the employee to it
+            int chairIndex = GetRandomAvailableChairIndex();
+            if (chairIndex != -1)
+            {
+                // Enable the object that is parented to the chair (instead of moving the employee)
+                GameObject chairObject = chairs[chairIndex]; // Get the chair object
+                Transform chairChild = chairObject.transform.GetChild(0); // Assuming the employee is the first child of the chair
+                chairChild.gameObject.SetActive(true); // Enable the employee object that is parented to the chair
+
+                // Mark the chair as occupied
+                chairOccupiedStatus[chairIndex] = true;
+
+                // Add the new employee to the assigned list
+                listAssigned.Add(employeePrefab);
+
+                // Disable the employee from the unassigned list
+                listUnEmployees.RemoveAt(0);
+
+                // Update stats
+                GameManager.instance._OfficeHappiness += employeePrefab.GetComponent<My_CV>().e_Happiness / listAssigned.Count;
+                GameManager.instance._OfficeEfficiency += employeePrefab.GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
+
+                CVNotification();
+                cvManager.ResetEmployee();
+                GetEmployeeStats();
+
+                Debug.Log($"Employee {employeePrefab.name} hired and assigned to chair {chairs[chairIndex].name}.");
+            }
+            else
+            {
+                Debug.Log("No available chairs for the employee.");
+            }
         }
         else
         {
-            Debug.Log("No more employees");
+            Debug.Log("No more employees available to hire.");
         }
     }
 
-    //Thanos snap code
+
+
+    // Method to assign employee to a random chair
+    private void AssignEmployeeToChair(GameObject emp)
+    {
+        int randomChairIndex = GetRandomAvailableChairIndex();
+
+        if (randomChairIndex != -1)
+        {
+            // Set the employee's position to the selected chair
+            emp.transform.position = chairs[randomChairIndex].transform.position;
+
+            // Mark the chair as occupied
+            chairOccupiedStatus[randomChairIndex] = true;
+        }
+        else
+        {
+            Debug.Log("No available chairs for the employee");
+        }
+    }
+
+    // Method to get the index of an available chair
+    private int GetRandomAvailableChairIndex()
+    {
+        List<int> availableChairIndexes = new List<int>();
+
+        // Find all chairs that are not occupied
+        for (int i = 0; i < chairOccupiedStatus.Count; i++)
+        {
+            if (!chairOccupiedStatus[i]) // If the chair is not occupied
+            {
+                availableChairIndexes.Add(i);
+            }
+        }
+
+        // If there are any available chairs, return a random one
+        if (availableChairIndexes.Count > 0)
+        {
+            int randomIndex = Random.Range(0, availableChairIndexes.Count);
+            return availableChairIndexes[randomIndex];
+        }
+
+        // Return -1 if no chair is available
+        return -1;
+    }
+
     public void DeclineEmployee()
     {
         if (listUnEmployees[0] != null)
@@ -101,39 +173,40 @@ public class Employee_Manager : MonoBehaviour
 
     public void FireEmployee(GameObject emp)
     {
-        //for (int i = 0; i < listUnassigned.Count; i++)
-        //{
-        //    if(listUnassigned[i] == emp)
-        //    {
-        //        listUnassigned.RemoveAt(i);
-        //        Destroy(emp);
-        //    }
-        //}
         for (int i = 0; i < listAssigned.Count; i++)
         {
-            if(listAssigned[i] == emp)
+            if (listAssigned[i] == emp)
             {
                 GameManager.instance._OfficeHappiness -= emp.GetComponent<My_CV>().e_Happiness / listAssigned.Count;
                 GameManager.instance._OfficeEfficiency -= emp.GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
                 listAssigned.RemoveAt(i);
+
+                // Free the chair and disable the employee object
+                FreeChair(emp);
+
                 Destroy(emp);
             }
         }
-        
     }
 
-    //public void MoveEmployee(GameObject empMove, Employee.EmployeePosition pos)
-    //{
-    //    for (int i = 0; i < listUnassigned.Count; i++)
-    //    {
-    //        if(listUnassigned[i] == empMove && listUnassigned[i].gameObject.GetComponent<My_CV>().e_position != pos)
-    //        {
-    //            listUnassigned[i].gameObject.GetComponent<My_CV>().e_position = pos;
-    //            listAssigned.Add(listUnassigned[i]);
-    //            listUnassigned.RemoveAt(i);
-    //        }
-    //    }
-    //}
+    // Free the chair when an employee is fired
+    private void FreeChair(GameObject emp)
+    {
+        for (int i = 0; i < chairs.Count; i++)
+        {
+            if (emp.transform.position == chairs[i].transform.position)
+            {
+                // Disable the employee object parented to the chair
+                Transform chairChild = chairs[i].transform.GetChild(0); // Assuming the employee is the first child of the chair
+                chairChild.gameObject.SetActive(false); // Disable the employee object
+
+                chairOccupiedStatus[i] = false; // Mark the chair as unoccupied
+                break;
+            }
+        }
+    }
+
+
     #endregion
 
     bool isDone = true;
@@ -141,16 +214,15 @@ public class Employee_Manager : MonoBehaviour
 
     public void GetDropdownValue()
     {
-        Debug.Log( department.value);
+        Debug.Log(department.value);
     }
-    
+
     public void CheckUnassignedSpace()
     {
-        if(listAssigned.Count > 0) 
+        if (listAssigned.Count > 0)
         {
             for (int i = 0; i < listAssigned.Count; i++)
             {
-
                 My_CV selectedEmployee = listAssigned[i].gameObject.GetComponent<My_CV>();
                 if (selectedEmployee.e_position == Employee.EmployeePosition.Unassigned)
                 {
@@ -166,7 +238,6 @@ public class Employee_Manager : MonoBehaviour
                 {
                     hireButton.interactable = true;
                 }
-
             }
             unassignedCount = 0;
             isDone = true;
@@ -175,7 +246,7 @@ public class Employee_Manager : MonoBehaviour
 
     private void CVNotification()
     {
-        if(listUnEmployees.Count > 0) 
+        if (listUnEmployees.Count > 0)
         {
             notification.SetActive(true);
         }
@@ -189,6 +260,4 @@ public class Employee_Manager : MonoBehaviour
     {
         FindAnyObjectByType<ButtonManager>().PlayNotificationSound();
     }
-
-
 }

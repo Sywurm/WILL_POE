@@ -9,6 +9,7 @@ TagManager:
   - Obsticle
   - Spawn Path
   - Fired Path
+  - Character
   layers:
   - Default
   - TransparentFX

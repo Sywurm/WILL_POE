@@ -3659,7 +3659,7 @@ GameObject:
   - component: {fileID: 1857286307969073220}
   m_Layer: 0
   m_Name: Character1move
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3893,6 +3893,10 @@ PrefabInstance:
     - target: {fileID: 683230663516752709, guid: c2452a40699b02141891582ace164a33, type: 3}
       propertyPath: m_Name
       value: Character1move
+      objectReference: {fileID: 0}
+    - target: {fileID: 683230663516752709, guid: c2452a40699b02141891582ace164a33, type: 3}
+      propertyPath: m_TagString
+      value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 6718461919071998563, guid: c2452a40699b02141891582ace164a33, type: 3}
       propertyPath: m_LocalPosition.x
