@@ -22,6 +22,8 @@ public class EmployeeCardManager : MonoBehaviour
     [SerializeField]List<Employee.EmployeePosition> availableDepartmentTypes = new List<Employee.EmployeePosition>();
 
     [SerializeField] List<TMP_Dropdown> transferDropdowns = new List<TMP_Dropdown>();
+
+    [SerializeField] ChairManager _chairmanager;
     private void Start()
     {
         departmentTypes.AddRange(Enum.GetValues(typeof(Employee.EmployeePosition)));
@@ -142,7 +144,17 @@ public class EmployeeCardManager : MonoBehaviour
             }
         }
 
-        departmentEmployees[cardIndex].e_position = (Employee.EmployeePosition)selectedDepartmentIndex;
+        Employee.EmployeePosition newPosition = (Employee.EmployeePosition)selectedDepartmentIndex;
+
+        
+        if(departmentEmployees[cardIndex].currentChair!= null)
+        {
+            departmentEmployees[cardIndex].currentChair.ResetChair();
+        }
+
+        departmentEmployees[cardIndex].e_position = newPosition;
+        _chairmanager.AssignChair(departmentEmployees[cardIndex]);
+
         GetEmployees();
     }
 

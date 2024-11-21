@@ -28,6 +28,9 @@ public class My_CV : MonoBehaviour
     public float e_Efficientcy;
     public float e_Productivity;
 
+    [Header("Sitting")]
+    public Chair currentChair;
+    public int sittingModelPos;
     private void Awake()
     {
         //Randomise Names
@@ -97,5 +100,13 @@ public class My_CV : MonoBehaviour
 
         float rngProductivity = Random.Range(0, 100);
         e_Productivity = rngProductivity;
+    }
+
+    private void OnDestroy()
+    {
+        if(currentChair != null) 
+        {
+            currentChair.ResetChair();
+        }
     }
 }
