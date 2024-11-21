@@ -4,11 +4,14 @@ using TMPro;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     #region Variables
     public static GameManager instance;
+
+    [SerializeField] GameObject PostGameScene;
 
     #region OfficeStates
     [Tooltip("This Value Represents the x rotation of the directional light (Sun).")]
@@ -109,6 +112,29 @@ public class GameManager : MonoBehaviour
         dayPublic = day;
         hourPublic = hour;
 
+        Debug.Log("Start Next Scene1");
+        if (day == 5 && hour >= 16 && currentTime >= 25)
+        {
+            Debug.Log("Start Next Scene2");
+            StartCoroutine(SwitchToPostGameScene());
+        }
+        Debug.Log("Start Next Scene3");
+    }
+
+    IEnumerator SwitchToPostGameScene()
+    {
+        yield return new WaitForSeconds(2f);
+
+        PostGameScene.SetActive(true);
+
+        yield return new WaitForSeconds(30f);
+
+        SceneChangeButton();
+    }
+
+    public void SceneChangeButton()
+    {
+        SceneManager.LoadScene("MakeYourCV");
     }
     // Update is called once per frame
     void FixedUpdate()
