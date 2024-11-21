@@ -189,7 +189,7 @@ public class Employee_Manager : MonoBehaviour
 
     private void PlayNotificationSound()
     {
-
+        FindAnyObjectByType<ButtonManager>().PlayNotificationSound();
     }
 
 

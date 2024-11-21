@@ -41,6 +41,11 @@ public class ButtonManager : MonoBehaviour
         SfxManager.Instance.PlaySound("PaperCrumple");
     }
 
+    public void PlayNotificationSound()
+    {
+        SfxManager.Instance.PlaySound("NotificationSound");
+    }
+
     public void ToggleGameObjectActive(GameObject toggle)
     {
         toggle.SetActive(!toggle.activeInHierarchy);
