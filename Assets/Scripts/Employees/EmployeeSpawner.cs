@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EmployeeSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject employeePrefab;
     [Header("Spawn Settings")]
     [SerializeField] float spawnDelayMin = 15;
     [SerializeField] float spawnDelayMax = 30;
@@ -13,6 +11,7 @@ public class EmployeeSpawner : MonoBehaviour
     public List<GameObject> employeeObjects = new List<GameObject>();
     public static EmployeeSpawner instance;
 
+    [SerializeField] Transform spawnLocation; // Empty object to determine where employees spawn
     [SerializeField] bool canSpawn = false;
 
     float spawnDelay = 1;
@@ -33,68 +32,80 @@ public class EmployeeSpawner : MonoBehaviour
         {
             SetSpawnAmount();
         }
-
     }
 
     IEnumerator spawnEmployee()
     {
         yield return new WaitForSeconds(spawnDelay);
-        Debug.Log(spawnDelay.ToString());
+
         if (spawnAmount != 0 && canSpawn == true && GameManager.instance.timeIsPaused == false)
         {
             spawnAmount--;
-            GameObject temp = Instantiate(employeeObjects[Random.Range(0, employeeObjects.Count)], this.transform.position, Quaternion.identity);
-            Employee_Manager.instance.SetEmployees(temp);
-            Debug.Log("Employee Spawned");
+
+            if (employeeObjects.Count > 0)
+            {
+                // Select a random employee from the list
+                int randomIndex = Random.Range(0, employeeObjects.Count);
+                GameObject selectedEmployee = employeeObjects[randomIndex];
+
+                // Use the spawnLocation if assigned, otherwise use this.transform.position
+                Vector3 spawnPosition = spawnLocation != null ? spawnLocation.position : this.transform.position;
+                Quaternion spawnRotation = spawnLocation != null ? spawnLocation.rotation : Quaternion.identity;
+
+                // Instantiate the selected employee
+                GameObject temp = Instantiate(selectedEmployee, spawnPosition, spawnRotation);
+
+                // Register the employee in the Employee_Manager
+                Employee_Manager.instance.SetEmployees(temp);
+                Debug.Log($"Employee Spawned: {selectedEmployee.name}");
+            }
+            else
+            {
+                Debug.LogWarning("No employee objects available to spawn.");
+            }
+
             canSpawn = false;
         }
 
+        // Wait for the next spawn
         yield return new WaitForSeconds(spawnDelay);
 
-        //I like the idea of the spawning happening between a somewhat random time.
-        //Taking into consideration each hour is 30 seconds, I have set the min to 15 / max to 45 so that there is a possibly large delay
+        // Randomize the next spawn delay
         spawnDelay = Random.Range(spawnDelayMin, spawnDelayMax);
         canSpawn = true;
         StartCoroutine(spawnEmployee());
     }
 
-    public void SetSpawnAmount() //(int amount)
+    public void SetSpawnAmount()
     {
-        //Grabs the public day int variable from the static instance of the game manager
-        switch(GameManager.instance.dayPublic)
+        // Determine the number of employees to spawn based on the day
+        switch (GameManager.instance.dayPublic)
         {
             case 0:
-                //Shouldnt reach this day but this will be replicate monday incase it does
+                spawnAmount = 2; // Shouldn't reach this day; default to Monday
+                break;
+            case 1: // Monday
                 spawnAmount = 2;
                 break;
-            case 1:
-                //Monday
-                spawnAmount = 2;
-                break;
-            case 2:
-                //Tueday
+            case 2: // Tuesday
                 spawnAmount = 4;
                 break;
-            case 3:
-                //Wednesday
+            case 3: // Wednesday
                 spawnAmount = 6;
                 break;
-            case 4:
-                //Thursday
+            case 4: // Thursday
                 spawnAmount = 8;
                 break;
-            case 5:
-                //Friday
+            case 5: // Friday
                 spawnAmount = 10;
                 break;
-            case 6:
-                //Shouldnt reach this day but this will be replicate saturday incase it does. It's just friday plus two
-                spawnAmount = 12;
+            case 6: // Saturday
+                spawnAmount = 12; // Extra spawns for Saturday
                 break;
             default:
                 spawnAmount = 6;
                 break;
         }
     }
-
 }
+

@@ -31,7 +31,7 @@ public class EmployeeMovement : MonoBehaviour
     private void Start()
     {
         // Start moving or handle other behavior
-        FireEmployee();
+        StartMoving();
     }
 
     public void StartMoving()
