@@ -40,7 +40,7 @@ public class EmployeeSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
         Debug.Log(spawnDelay.ToString());
-        if (spawnAmount != 0 && canSpawn == true)
+        if (spawnAmount != 0 && canSpawn == true && GameManager.instance.timeIsPaused == false)
         {
             spawnAmount--;
             GameObject temp = Instantiate(employeePrefab, this.transform.position, Quaternion.identity);
