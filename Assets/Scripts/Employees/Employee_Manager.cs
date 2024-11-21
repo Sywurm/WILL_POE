@@ -68,8 +68,8 @@ public class Employee_Manager : MonoBehaviour
             listUnEmployees[0].gameObject.GetComponent<My_CV>().e_IsHired = true;
             //Generate the employee card
             listAssigned.Add(listUnEmployees[0]);
-            GameManager.instance._OfficeHappiness += listUnEmployees[0].GetComponent<My_CV>().e_Happiness;
-            GameManager.instance._OfficeEfficiency += listUnEmployees[0].GetComponent<My_CV>().e_Efficientcy;
+            GameManager.instance._OfficeHappiness += listUnEmployees[0].GetComponent<My_CV>().e_Happiness / listUnEmployees.Count;
+            GameManager.instance._OfficeEfficiency += listUnEmployees[0].GetComponent<My_CV>().e_Efficientcy / listUnEmployees.Count;
             listUnEmployees.Remove(listUnEmployees[0]);
             cvManager.ResetEmployee();
             GetEmployeeStats();
@@ -109,8 +109,8 @@ public class Employee_Manager : MonoBehaviour
         {
             if(listAssigned[i] == emp)
             {
-                GameManager.instance._OfficeHappiness -= emp.GetComponent<My_CV>().e_Happiness;
-                GameManager.instance._OfficeEfficiency -= emp.GetComponent<My_CV>().e_Efficientcy;
+                GameManager.instance._OfficeHappiness -= emp.GetComponent<My_CV>().e_Happiness / listAssigned.Count;
+                GameManager.instance._OfficeEfficiency -= emp.GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
                 listAssigned.RemoveAt(i);
                 Destroy(emp);
             }
