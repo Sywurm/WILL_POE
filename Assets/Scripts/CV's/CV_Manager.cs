@@ -11,9 +11,15 @@ public class CV_Manager : MonoBehaviour
     [Header("CV Settings")]
     [SerializeField] private GameObject empName;
     [SerializeField] private GameObject empPicture;
-    [SerializeField] private GameObject empHappiness;
-    [SerializeField] private GameObject empEfficiency;
-    [SerializeField] private GameObject empProductivity;
+
+    [SerializeField] private Slider empHappiness;
+    [SerializeField] private Slider empEfficiency;
+    [SerializeField] private Slider empProductivity;
+
+    [SerializeField] private Image empHappinessFill;
+    [SerializeField] private Image empEfficiencyFill;
+    [SerializeField] private Image empProductivityFill;
+
     [SerializeField] private GameObject empSkill;
     [SerializeField] private GameObject empBiography;
     [SerializeField] private GameObject empEducation;
@@ -24,11 +30,72 @@ public class CV_Manager : MonoBehaviour
     {
         empName.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_Name;
         empPicture.GetComponent<Image>().sprite = employee.GetComponent<My_CV>().e_EmployeeFoto;
-        empHappiness.GetComponent<Slider>().value = employee.GetComponent<My_CV>().e_Happiness;
-        //Change Interactablity for happiness slider
-        empEfficiency.GetComponent<Slider>().value = employee.GetComponent<My_CV>().e_Efficientcy;
-        //Change Interactablity for the efficientcy slider
-        empProductivity.GetComponent<Slider>().value = employee.GetComponent <My_CV>().e_Productivity;
+
+        float happieness = employee.GetComponent<My_CV>().e_Happiness;
+        float productivity = employee.GetComponent<My_CV>().e_Productivity;
+        float effeciency = employee.GetComponent<My_CV>().e_Efficientcy;
+
+        empHappiness.value = happieness;
+        empEfficiency.value = effeciency;
+        empProductivity.value = productivity;
+
+        switch (happieness)
+        {
+            case float i when i >= 0f && i < 33f:
+                {
+                    empHappinessFill.color = GameManager.instance.low;
+                    break;
+                }
+            case float i when i >= 33f && i < 66f:
+                {
+                    empHappinessFill.color = GameManager.instance.mid;
+                    break;
+                }
+            case float i when i >= 66f && i < 100f:
+                {
+                    empHappinessFill.color = GameManager.instance.high;
+                    break;
+                }
+        }
+
+        switch (productivity)
+        {
+            case float i when i >= 0f && i < 33f:
+                {
+                    empProductivityFill.color = GameManager.instance.low;
+                    break;
+                }
+            case float i when i >= 33f && i < 66f:
+                {
+                    empProductivityFill.color = GameManager.instance.mid;
+                    break;
+                }
+            case float i when i >= 66f && i < 100f:
+                {
+                    empProductivityFill.color = GameManager.instance.high;
+                    break;
+                }
+        }
+
+        switch (effeciency)
+        {
+            case float i when i >= 0f && i < 33f:
+                {
+                    empEfficiencyFill.color = GameManager.instance.low;
+                    break;
+                }
+            case float i when i >= 33f && i < 66f:
+                {
+                    empEfficiencyFill.color = GameManager.instance.mid;
+                    break;
+                }
+            case float i when i >= 66f && i < 100f:
+                {
+                    empEfficiencyFill.color = GameManager.instance.high;
+                    break;
+                }
+        }
+
         //Change interactability for the productivity slider
         empBiography.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_bio;
         
@@ -53,9 +120,9 @@ public class CV_Manager : MonoBehaviour
     {
         empName.GetComponent<TMP_Text>().text = "";
         empPicture.GetComponent<Image>().sprite = null;
-        empHappiness.GetComponent<Slider>().value = 0;
-        empEfficiency.GetComponent<Slider>().value = 0;
-        empProductivity.GetComponent<Slider>().value = 0;
+        empHappiness.value = 0;
+        empEfficiency.value = 0;
+        empProductivity.value = 0;
         empBiography.GetComponent<TMP_Text>().text = "";
         empSkill.GetComponent<TMP_Text>().text = "";
         empEducation.GetComponent<TMP_Text>().text = "";

@@ -1137,9 +1137,9 @@ MonoBehaviour:
   OfficeEfficencySlider: {fileID: 475729872}
   OfficeHappinessSliderFill: {fileID: 685827134}
   OfficeEfficencySliderFill: {fileID: 1152187349}
-  low: {r: 0.94716984, g: 0.23411177, b: 0.23411177, a: 1}
-  mid: {r: 0.93207544, g: 0.83210397, b: 0.117828384, a: 1}
-  high: {r: 0.1299389, g: 0.7283019, b: 0, a: 1}
+  low: {r: 1, g: 0, b: 0, a: 1}
+  mid: {r: 1, g: 0.875, b: 0, a: 1}
+  high: {r: 0.20690793, g: 1, b: 0.035848916, a: 1}
   seconds: 0
   currentTime: 0
   multiplier: 1
@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -4286,7 +4286,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -12553,7 +12553,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -40467,7 +40467,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -44430,7 +44430,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -46871,7 +46871,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -47453,7 +47453,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -48238,7 +48238,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -59713,7 +59713,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -67351,9 +67351,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   empName: {fileID: 6817327337743570839}
   empPicture: {fileID: 8232856132640849263}
-  empHappiness: {fileID: 6988699501744254607}
-  empEfficiency: {fileID: 8182587356529011378}
-  empProductivity: {fileID: 8419825691101957071}
+  empHappiness: {fileID: 5580787805480790326}
+  empEfficiency: {fileID: 3053507534949555673}
+  empProductivity: {fileID: 4764193735469132539}
+  empHappinessFill: {fileID: 5175993165578095983}
+  empEfficiencyFill: {fileID: 5419579936727840692}
+  empProductivityFill: {fileID: 8661341733395342546}
   empSkill: {fileID: 60431761694680730}
   empBiography: {fileID: 7014236750943834719}
   empEducation: {fileID: 7760504504822678274}
@@ -70203,7 +70206,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -70669,7 +70672,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -73522,7 +73525,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

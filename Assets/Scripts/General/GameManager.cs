@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider OfficeEfficencySlider;
     [SerializeField] Image OfficeHappinessSliderFill;
     [SerializeField] Image OfficeEfficencySliderFill;
-    [SerializeField] Color low;
-    [SerializeField] Color mid;
-    [SerializeField] Color high;
+    public Color low;
+    public Color mid;
+    public Color high;
     #endregion
 
     #region TimeManagement

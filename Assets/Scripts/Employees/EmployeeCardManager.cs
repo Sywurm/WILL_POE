@@ -70,16 +70,80 @@ public class EmployeeCardManager : MonoBehaviour
             employeeStatCards[i].SetActive(true);
             Image employeeIcon = employeeStatCards[i].transform.GetChild(0).GetComponent<Image>();
             TMP_Text nameText = employeeStatCards[i].transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>();
+
             Slider efficiency = employeeStatCards[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Slider>();
+            Image efficiencyFill = employeeStatCards[i].transform.GetChild(1).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<Image>();
+
             Slider attituded = employeeStatCards[i].transform.GetChild(2).transform.GetChild(0).GetComponent<Slider>();
+            Image attitudedfill = employeeStatCards[i].transform.GetChild(2).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<Image>();
+
             Slider productivity = employeeStatCards[i].transform.GetChild(3).transform.GetChild(0).GetComponent<Slider>();
+            Image productivityfill = employeeStatCards[i].transform.GetChild(3).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<Image>();
+
             TMP_Dropdown reassignDropdown = employeeStatCards[i].transform.GetChild(5).GetComponent<TMP_Dropdown>();
             
             employeeIcon.sprite = departmentEmployees[i].e_EmployeeFoto;
             nameText.text = departmentEmployees[i].e_Name;
-            efficiency.value = departmentEmployees[i].e_Efficientcy / 100f;
-            attituded.value = departmentEmployees[i].e_Happiness / 100f;
-            productivity.value = departmentEmployees[i].e_Productivity / 100f;
+            efficiency.value = departmentEmployees[i].e_Efficientcy;
+            attituded.value = departmentEmployees[i].e_Happiness;
+            productivity.value = departmentEmployees[i].e_Productivity;
+
+            switch (efficiency.value)
+            {
+                case float j when j >= 0f && j < 33f:
+                    {
+                        efficiencyFill.color = GameManager.instance.low;
+                        break;
+                    }
+                case float j when j >= 33f && j < 66f:
+                    {
+                        efficiencyFill.color = GameManager.instance.mid;
+                        break;
+                    }
+                case float j when j >= 66f && j < 100f:
+                    {
+                        efficiencyFill.color = GameManager.instance.high;
+                        break;
+                    }
+            }
+
+            switch (attituded.value)
+            {
+                case float j when j >= 0f && j < 33f:
+                    {
+                        attitudedfill.color = GameManager.instance.low;
+                        break;
+                    }
+                case float j when j >= 33f && j < 66f:
+                    {
+                        attitudedfill.color = GameManager.instance.mid;
+                        break;
+                    }
+                case float j when j >= 66f && j < 100f:
+                    {
+                        attitudedfill.color = GameManager.instance.high;
+                        break;
+                    }
+            }
+
+            switch (productivity.value)
+            {
+                case float j when j >= 0f && j < 33f:
+                    {
+                        productivityfill.color = GameManager.instance.low;
+                        break;
+                    }
+                case float j when j >= 33f && j < 66f:
+                    {
+                        productivityfill.color = GameManager.instance.mid;
+                        break;
+                    }
+                case float j when j >= 66f && j < 100f:
+                    {
+                        productivityfill.color = GameManager.instance.high;
+                        break;
+                    }
+            }
             //reassignDropdown.value = (int)departmentEmployees[i].e_position;
 
             //string employeedepartmentenum = departmentEmployees[i].e_position.ToString();
