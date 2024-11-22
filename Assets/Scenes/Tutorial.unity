@@ -43592,9 +43592,9 @@ MonoBehaviour:
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
   - MainTextContents: "\"Good question! There are Two important bars that you must
-      watch out for. Employee Happiness, Employee Productivity. If any of these bars
-      reach zero\u2026 well, let\u2019s just say, it\u2019s game over for you. No
-      pressure though!\""
+      watch out for. Employee Happiness & Employee Productivity. If any of these
+      bars reach below 20%\u2026 well, let\u2019s just say, it\u2019s game over for
+      you. No pressure though!\""
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
   - MainTextContents: "\"You can manage these bars through the Employee Manager and
@@ -43619,6 +43619,11 @@ MonoBehaviour:
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
   - MainTextContents: '"I understand! Is there anything else?"'
+    requireGivenGameObjectActive: 0
+    activePassCheck: {fileID: 0}
+  - MainTextContents: '"The more employees that you hire, the less each employees
+      status will count towards your overall efficiency and happiness. You will therefore
+      need more employees to keep up the happiness and efficiency."'
     requireGivenGameObjectActive: 0
     activePassCheck: {fileID: 0}
   - MainTextContents: '"Those are the basics. Just remembering is important. Do not
