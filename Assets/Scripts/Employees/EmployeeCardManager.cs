@@ -190,7 +190,8 @@ public class EmployeeCardManager : MonoBehaviour
 
                     if (count >= 4)
                     {
-                        availableDepartmentTypes.RemoveAt(i);
+                        Employee.EmployeePosition removedDepartment = departmentTypes[i];
+                        availableDepartmentTypes.Remove(removedDepartment);
                     }
                 }
                 
