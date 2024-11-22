@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class Employee_Manager : MonoBehaviour
     [SerializeField] Button hireButton;
     [SerializeField] GameObject CVpage;
     [SerializeField] GameObject notification;
+    private int totalHappiness;
+    private int totalEfficientcy;
 
     // Chair references
     public List<GameObject> chairs; // List to hold chair references
@@ -89,9 +92,18 @@ public class Employee_Manager : MonoBehaviour
                 // Disable the employee from the unassigned list
                 listUnEmployees.RemoveAt(0);
 
+                totalHappiness = 0;
+                totalEfficientcy = 0;
+
                 // Update stats
-                GameManager.instance._OfficeHappiness += employeePrefab.GetComponent<My_CV>().e_Happiness / listAssigned.Count;
-                GameManager.instance._OfficeEfficiency += employeePrefab.GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
+                for (int i = 0; i < listAssigned.Count; i++)
+                {                    
+                    totalHappiness += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Happiness;
+                    totalEfficientcy += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Efficientcy;
+
+                }
+                GameManager.instance._OfficeHappiness = totalHappiness / listAssigned.Count;
+                GameManager.instance._OfficeEfficiency = totalEfficientcy / listAssigned.Count;
 
                 CVNotification();
                 cvManager.ResetEmployee();
@@ -109,8 +121,6 @@ public class Employee_Manager : MonoBehaviour
             Debug.Log("No more employees available to hire.");
         }
     }
-
-
 
     // Method to assign employee to a random chair
     private void AssignEmployeeToChair(GameObject emp)
@@ -177,16 +187,32 @@ public class Employee_Manager : MonoBehaviour
         {
             if (listAssigned[i] == emp)
             {
-                GameManager.instance._OfficeHappiness -= emp.GetComponent<My_CV>().e_Happiness / listAssigned.Count;
-                GameManager.instance._OfficeEfficiency -= emp.GetComponent<My_CV>().e_Efficientcy / listAssigned.Count;
                 listAssigned.RemoveAt(i);
 
                 // Free the chair and disable the employee object
                 FreeChair(emp);
-
                 Destroy(emp);
             }
         }
+
+        totalHappiness = 0;
+        totalEfficientcy = 0;
+
+        if(listAssigned.Count == 0)
+        {
+            GameManager.instance._OfficeHappiness = 0;
+            GameManager.instance._OfficeEfficiency = 0;           
+        }
+        else
+        {
+            for (int i = 0; i < listAssigned.Count; i++)
+            {
+                totalHappiness += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Happiness;
+                totalEfficientcy += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Efficientcy;
+            }
+            GameManager.instance._OfficeHappiness = totalHappiness / listAssigned.Count;
+            GameManager.instance._OfficeEfficiency = totalEfficientcy / listAssigned.Count;
+        }        
     }
 
     // Free the chair when an employee is fired
@@ -205,7 +231,6 @@ public class Employee_Manager : MonoBehaviour
             }
         }
     }
-
 
     #endregion
 
