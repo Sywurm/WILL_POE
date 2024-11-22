@@ -5,6 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,16 +19,23 @@ public class GameManager : MonoBehaviour
     [SerializeField][Range(0, 180)] private float sunRotationX;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
-    public float _OfficeHappiness;
+    public float _OfficeHappiness = 0f;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
-    public float _OfficeEfficiency;
+    public float _OfficeEfficiency = 0f;
 
     [Tooltip("This Value is public so other elements such as UI can access it ")]
     public float _OfficeState;
 
+    [SerializeField] TMP_Text happienessPercent;
+    [SerializeField] TMP_Text effeciencyPercent;
     [SerializeField] Slider OfficeHappinessSlider;
     [SerializeField] Slider OfficeEfficencySlider;
+    [SerializeField] Image OfficeHappinessSliderFill;
+    [SerializeField] Image OfficeEfficencySliderFill;
+    [SerializeField] Color low;
+    [SerializeField] Color mid;
+    [SerializeField] Color high;
     #endregion
 
     #region TimeManagement
@@ -106,8 +114,7 @@ public class GameManager : MonoBehaviour
         //    }
         //}
 
-        OfficeHappinessSlider.value = _OfficeHappiness;
-        OfficeEfficencySlider.value = _OfficeEfficiency;
+       
 
         dayPublic = day;
         hourPublic = hour;
@@ -132,6 +139,59 @@ public class GameManager : MonoBehaviour
         SceneChangeButton();
     }
 
+    public void UpdateOfficeStats()
+    {
+        OfficeHappinessSlider.value = _OfficeHappiness;
+        OfficeEfficencySlider.value = _OfficeEfficiency;
+
+        if(_OfficeHappiness < 20f || _OfficeEfficiency < 20f)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
+
+        happienessPercent.text = _OfficeHappiness.ToString("F2") + "%";
+        effeciencyPercent.text = _OfficeEfficiency.ToString("F2") + "%";
+
+        switch (OfficeHappinessSlider.value)
+        {
+            case float i when i >= 0f && i < 33f:
+                {
+                    OfficeHappinessSliderFill.color = low;
+                    break;
+                }
+            case float i when i >= 33f && i < 66f:
+                {
+                    OfficeHappinessSliderFill.color = mid;
+                    break;
+                }
+            case float i when i >= 66f && i < 100f:
+                {
+                    OfficeHappinessSliderFill.color = high;
+                    break;
+                }
+        }
+
+        switch (OfficeEfficencySlider.value)
+        {
+            case float i when i >= 0f && i < 33f:
+                {
+                    OfficeEfficencySliderFill.color = low;
+                    break;
+                }
+            case float i when i >= 33f && i < 66f:
+                {
+                    OfficeEfficencySliderFill.color = mid;
+                    break;
+                }
+            case float i when i >= 66f && i < 100f:
+                {
+                    OfficeEfficencySliderFill.color = high;
+                    break;
+                }
+        }
+
+       
+    }
     public void SceneChangeButton()
     {
         SceneManager.LoadScene("MakeYourCV");

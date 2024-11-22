@@ -35,6 +35,11 @@ public class Employee_Manager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SetOfficeStats();
+    }
+
     private void FixedUpdate()
     {
         if (isDone && listAssigned.Count > 0)
@@ -77,47 +82,21 @@ public class Employee_Manager : MonoBehaviour
             // Get the employee prefab from the unassigned list
             GameObject employeePrefab = listUnEmployees[0];
 
-            // Find an available chair and assign the employee to it
-            int chairIndex = GetRandomAvailableChairIndex();
-            if (chairIndex != -1)
-            {
-                // Enable the object that is parented to the chair (instead of moving the employee)
-                GameObject chairObject = chairs[chairIndex]; // Get the chair object
-                Transform chairChild = chairObject.transform.GetChild(0); // Assuming the employee is the first child of the chair
-                chairChild.gameObject.SetActive(true); // Enable the employee object that is parented to the chair
+            // Add the new employee to the assigned list
+            listAssigned.Add(employeePrefab);
 
-                // Mark the chair as occupied
-                chairOccupiedStatus[chairIndex] = true;
+            // Disable the employee from the unassigned list
+            listUnEmployees.RemoveAt(0);
 
-                // Add the new employee to the assigned list
-                listAssigned.Add(employeePrefab);
+            // Update stats
+            SetOfficeStats();
 
-                // Disable the employee from the unassigned list
-                listUnEmployees.RemoveAt(0);
+            CVNotification();
+            cvManager.ResetEmployee();
+            GetEmployeeStats();
 
-                totalHappiness = 0;
-                totalEfficientcy = 0;
 
-                // Update stats
-                for (int i = 0; i < listAssigned.Count; i++)
-                {                    
-                    totalHappiness += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Happiness;
-                    totalEfficientcy += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Efficientcy;
 
-                }
-                GameManager.instance._OfficeHappiness = totalHappiness / listAssigned.Count;
-                GameManager.instance._OfficeEfficiency = totalEfficientcy / listAssigned.Count;
-
-                CVNotification();
-                cvManager.ResetEmployee();
-                GetEmployeeStats();
-
-                Debug.Log($"Employee {employeePrefab.name} hired and assigned to chair {chairs[chairIndex].name}.");
-            }
-            else
-            {
-                Debug.Log("No available chairs for the employee.");
-            }
         }
         else
         {
@@ -125,48 +104,38 @@ public class Employee_Manager : MonoBehaviour
         }
     }
 
-    // Method to assign employee to a random chair
-    private void AssignEmployeeToChair(GameObject emp)
+    //Sets the stats of the office
+    int highestEmployeeCount = 0;
+    public void SetOfficeStats()
     {
-        int randomChairIndex = GetRandomAvailableChairIndex();
+        totalHappiness = 0;
+        totalEfficientcy = 0;
+        int currentEmployeeCount = listAssigned.Count;
 
-        if (randomChairIndex != -1)
+        if(currentEmployeeCount > highestEmployeeCount)
         {
-            // Set the employee's position to the selected chair
-            emp.transform.position = chairs[randomChairIndex].transform.position;
+            highestEmployeeCount = currentEmployeeCount;
+        }
 
-            // Mark the chair as occupied
-            chairOccupiedStatus[randomChairIndex] = true;
+        if (listAssigned.Count == 0)
+        {
+            GameManager.instance._OfficeHappiness = totalHappiness;
+            GameManager.instance._OfficeEfficiency = totalEfficientcy;
+            GameManager.instance.UpdateOfficeStats();
         }
         else
         {
-            Debug.Log("No available chairs for the employee");
-        }
-    }
-
-    // Method to get the index of an available chair
-    private int GetRandomAvailableChairIndex()
-    {
-        List<int> availableChairIndexes = new List<int>();
-
-        // Find all chairs that are not occupied
-        for (int i = 0; i < chairOccupiedStatus.Count; i++)
-        {
-            if (!chairOccupiedStatus[i]) // If the chair is not occupied
+            for (int i = 0; i < listAssigned.Count; i++)
             {
-                availableChairIndexes.Add(i);
+                totalHappiness += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Happiness;
+                totalEfficientcy += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Efficientcy;
+                Debug.Log("Total Happiness: " + totalHappiness);
             }
+            GameManager.instance._OfficeHappiness = (totalHappiness / (highestEmployeeCount * 100f)) * 100f;
+            GameManager.instance._OfficeEfficiency = (totalEfficientcy / (highestEmployeeCount * 100f)) * 100f;
+            GameManager.instance.UpdateOfficeStats();
         }
-
-        // If there are any available chairs, return a random one
-        if (availableChairIndexes.Count > 0)
-        {
-            int randomIndex = Random.Range(0, availableChairIndexes.Count);
-            return availableChairIndexes[randomIndex];
-        }
-
-        // Return -1 if no chair is available
-        return -1;
+       
     }
 
     //Removing the employee in the list
@@ -200,24 +169,7 @@ public class Employee_Manager : MonoBehaviour
             }
         }
 
-        totalHappiness = 0;
-        totalEfficientcy = 0;
-
-        if(listAssigned.Count == 0)
-        {
-            GameManager.instance._OfficeHappiness = 0;
-            GameManager.instance._OfficeEfficiency = 0;           
-        }
-        else
-        {
-            for (int i = 0; i < listAssigned.Count; i++)
-            {
-                totalHappiness += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Happiness;
-                totalEfficientcy += (int)listAssigned[i].gameObject.GetComponent<My_CV>().e_Efficientcy;
-            }
-            GameManager.instance._OfficeHappiness = totalHappiness / listAssigned.Count;
-            GameManager.instance._OfficeEfficiency = totalEfficientcy / listAssigned.Count;
-        }        
+       SetOfficeStats();
     }
 
     // Free the chair when an employee is fired
