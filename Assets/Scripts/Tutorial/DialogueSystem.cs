@@ -24,6 +24,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private int curDialogueIdx = 0;
 
     public GameObject blackBG;
+    public GameObject BossImage;
     public GameObject OfficeSliders;
     public GameObject menus;
     public GameObject CVExample;
@@ -86,12 +87,14 @@ public class DialogueSystem : MonoBehaviour
             CVExample.SetActive(false);
         }
 
-        if (curDialogueIdx == 3)
+        if (curDialogueIdx == 3 || curDialogueIdx == 8)
         {
             menus.SetActive(true);
+            BossImage.SetActive(false);
         }
         else
         {
+            BossImage.SetActive(true);
             menus.SetActive(false);
         }
 
@@ -113,19 +116,19 @@ public class DialogueSystem : MonoBehaviour
             OfficeSliders.SetActive(false);
         }
 
-        if (curDialogueIdx == 8)
-        {
-            menus.SetActive(true);
-        }
-        else
-        {
-            menus.SetActive(false);
-        }
+        //if (curDialogueIdx == 8)
+        //{
+        //    menus.SetActive(true);
+        //}
+        //else
+        //{
+        //    menus.SetActive(false);
+        //}
     }
 
     IEnumerator GoToMainGame()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("MainGame");
     }
 }
