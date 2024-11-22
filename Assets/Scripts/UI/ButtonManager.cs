@@ -51,6 +51,16 @@ public class ButtonManager : MonoBehaviour
         SfxManager.Instance.PlaySound("NotificationSound");
     }
 
+    public void PlayHireSound()
+    {
+        SfxManager.Instance.PlaySound("GoodSFX");
+    }
+
+    public void PlayFireSound()
+    {
+        SfxManager.Instance.PlaySound("CrySound");
+    }
+
     public void ToggleGameObjectActive(GameObject toggle)
     {
         toggle.SetActive(!toggle.activeInHierarchy);
