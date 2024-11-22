@@ -5,6 +5,7 @@ using System.IO;
 
 public class My_CV : MonoBehaviour
 {
+    // Variable to save for the CV stats
     [Header("List of available Items", order = 0)]
     [SerializeField] private List<string> names;
     [SerializeField] private List<string> biography;
@@ -28,6 +29,7 @@ public class My_CV : MonoBehaviour
     public float e_Efficientcy;
     public float e_Productivity;
 
+    //seetings for sitting
     [Header("Sitting")]
     public Chair currentChair = null;
     public int sittingModelPos;
@@ -92,12 +94,15 @@ public class My_CV : MonoBehaviour
             e_workExp.Add(workExp[rngWorkExp]);
         }
 
+        //Randomise the value for happiness
         float rngHappy = Random.Range(0, 100);
         e_Happiness = rngHappy;
 
+        //Randomise the value for Efficientcy
         float rngEfficientcy = Random.Range(0, 100);
         e_Efficientcy = rngEfficientcy;
 
+        //Randomise the value for Productivity
         float rngProductivity = Random.Range(0, 100);
         e_Productivity = rngProductivity;
     }

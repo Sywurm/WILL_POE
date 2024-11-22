@@ -35,6 +35,7 @@ public class Tutorial_CV : MonoBehaviour
         }
     }
 
+    // The Default Good cv so its easy to accept
     public void GoodCV()
     {
         employeePicture.GetComponent<Image>().sprite = goodCV.e_EmployeeFoto;
@@ -56,6 +57,7 @@ public class Tutorial_CV : MonoBehaviour
         }
     }
 
+    // The Default Bad cv so its easy to deny
     public void BadCV()
     {
         employeePicture.GetComponent<Image>().sprite = badCV.e_EmployeeFoto;

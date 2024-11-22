@@ -19,6 +19,7 @@ public class CV_Manager : MonoBehaviour
     [SerializeField] private GameObject empEducation;
     [SerializeField] private GameObject empWorkExperience;
 
+    // Setting up the CV Ui with the values from the employee
     public void SetCV(GameObject employee)
     {
         empName.GetComponent<TMP_Text>().text = employee.GetComponent<My_CV>().e_Name;
@@ -47,6 +48,7 @@ public class CV_Manager : MonoBehaviour
         }
     }
 
+    // Reseting the CV Ui so it can take new values
     public void ResetEmployee()
     {
         empName.GetComponent<TMP_Text>().text = "";

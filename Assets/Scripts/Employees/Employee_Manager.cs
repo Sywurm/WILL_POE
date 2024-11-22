@@ -55,6 +55,7 @@ public class Employee_Manager : MonoBehaviour
 
     // This Region Manages all of the stats of the employees
     #region Getting the Employee Stats
+    //Setting the data of the spawned employee
     public void SetEmployees(GameObject emp)
     {
         listUnEmployees.Add(emp);
@@ -66,7 +67,9 @@ public class Employee_Manager : MonoBehaviour
     {
         cvManager.ResetEmployee();
     }
-
+    
+    // Hireing the employee first in the list
+    // Calculating the average of the office hapiness and efficientcy
     public void HireEmployee()
     {
         if (listUnEmployees.Count > 0)
@@ -166,6 +169,7 @@ public class Employee_Manager : MonoBehaviour
         return -1;
     }
 
+    //Removing the employee in the list
     public void DeclineEmployee()
     {
         if (listUnEmployees[0] != null)
@@ -181,6 +185,7 @@ public class Employee_Manager : MonoBehaviour
         }
     }
 
+    // Removing the selected employee and recalculating average
     public void FireEmployee(GameObject emp)
     {
         for (int i = 0; i < listAssigned.Count; i++)
