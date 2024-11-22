@@ -79,6 +79,11 @@ public class DialogueSystem : MonoBehaviour
             blackBG.gameObject.SetActive(false);
         }
 
+        if(curDialogueIdx == 9)
+        {
+            tutorialDialogueObject.transform.position = new Vector3(328, 133, 0);
+        }
+
         if (curDialogueIdx == 2)
         {
             CVExample.SetActive(true);
