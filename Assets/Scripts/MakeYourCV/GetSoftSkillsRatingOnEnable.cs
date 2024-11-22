@@ -36,7 +36,7 @@ public class GetSoftSkillsRatingOnEnable : MonoBehaviour
 		else if (teamWorkSlider.value < 0.5f && teamWorkSlider.value == min)
 		{
 			adviceTextOutput_component.gameObject.SetActive(true);
-			adviceTextOutput_component.text = "Your Weakest skill is Team Word, try to work on this!";
+			adviceTextOutput_component.text = "Your Weakest skill is Team Work, try to work on this!";
 		}
 		else if (projectManagementSlider.value < 0.5f && projectManagementSlider.value == min)
 		{
