@@ -11,8 +11,5 @@ public class MakeYourCVButtonManager : MonoBehaviour
     {
         createSectionPanel.SetActive(false);
         evaluationSectionPanel.SetActive(true);
-
-        // TODO: Disable UI for CV so they cant move items anymore
-        // TODO: Calculate statistics to display.
     }
 }
