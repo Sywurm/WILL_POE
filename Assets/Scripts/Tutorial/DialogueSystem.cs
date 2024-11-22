@@ -23,6 +23,7 @@ public class DialogueSystem : MonoBehaviour
     private Image panelImg;
     [SerializeField] private int curDialogueIdx = 0;
 
+    public GameObject tutorialDialogueObject;
     public GameObject blackBG;
     public GameObject BossImage;
     public GameObject OfficeSliders;
@@ -81,6 +82,7 @@ public class DialogueSystem : MonoBehaviour
         if (curDialogueIdx == 2)
         {
             CVExample.SetActive(true);
+            
         }
         else
         {
@@ -91,20 +93,26 @@ public class DialogueSystem : MonoBehaviour
         {
             menus.SetActive(true);
             BossImage.SetActive(false);
+            tutorialDialogueObject.transform.position = new Vector3(328, 630, 0);
         }
         else
         {
             BossImage.SetActive(true);
             menus.SetActive(false);
+            //tutorialDialogueObject.transform.position = new Vector3(328, 133, 0);
+
         }
 
         if (curDialogueIdx == 4)
         {
             EmployeeManagementExample.SetActive(true);
+            tutorialDialogueObject.transform.position = new Vector3(328, 133, 0);
+            //tutorialDialogueObject.transform.position = new Vector3(328, 630, 0);
         }
         else
         {
             EmployeeManagementExample.SetActive(false);
+            //tutorialDialogueObject.transform.position = new Vector3(328, 133, 0);
         }
 
         if (curDialogueIdx == 6)

@@ -26,6 +26,11 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("MainGame");
     }
 
+    public void SetSceneTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void SetSceneMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
